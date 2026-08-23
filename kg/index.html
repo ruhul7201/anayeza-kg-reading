@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amity Kindergarten Reading Class</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E2A4A; --ink2:#22304F; --muted:#5B6B85; --bg:#F4F7FB; --card:#FFFFFF;
+  --gold:#F5B301; --gold-soft:#FDF3D7;
+  --prek:#3E9E71; --prek-soft:#E3F4EC;
+  --kg1:#E8674F; --kg1-soft:#FCEAE5;
+  --kg2:#5B6BD6; --kg2-soft:#E9ECFB;
+  --line:#E3E9F2; --radius:16px;
+  --shadow:0 2px 10px rgba(30,42,74,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+#assessment-methods{scroll-margin-top:120px}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink2);font-size:15.5px;line-height:1.55}
+h1,h2,h3,h4,.disp{font-family:'Baloo 2',cursive;color:var(--ink);line-height:1.2}
+a{color:var(--kg2)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ── Header ── */
+/* ── Admin Login Bar ── */
+.admin-topbar{background:#12182E;color:#D7E0F2;font-family:'Baloo 2';font-weight:700;font-size:13.5px;padding:8px 0}
+.admin-topbar-inner{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.admin-icon{font-size:14px}
+.admin-label{color:#B9C4DB}
+#adminPass{font-family:'Nunito';font-weight:700;font-size:13px;padding:5px 10px;border-radius:8px;border:1px solid #3A4568;background:#1E2A4A;color:#fff;width:110px}
+#adminPass::placeholder{color:#7C89AC}
+#adminPass:focus{outline:2px solid var(--gold)}
+.admin-topbar button{font-family:'Baloo 2';font-weight:800;font-size:12.5px;background:var(--gold);color:var(--ink);border:none;padding:5px 14px;border-radius:8px;cursor:pointer}
+.admin-topbar button:hover{filter:brightness(1.06)}
+#adminLogoutBtn{background:#3A4568;color:#fff}
+.admin-msg{font-size:12.5px;font-weight:700;color:#FF8A80}
+.admin-msg.ok{color:#7BE0B8}
+.admin-only{display:none !important}
+body.admin-on .admin-only{display:inline-flex !important}
+.guest-only{display:inline}
+body.admin-on .guest-only{display:none}
+header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(30,42,74,.25)}
+.topbar{display:flex;align-items:center;gap:14px;padding:12px 0}
+.logo{width:46px;height:46px;border-radius:12px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
+.site-title{font-family:'Baloo 2';font-weight:800;font-size:20px;color:#fff}
+.site-sub{font-size:12px;color:#B9C4DB;font-weight:600;letter-spacing:.4px}
+nav{display:flex;gap:2px;flex-wrap:wrap;padding-bottom:10px}
+nav button{font-family:'Baloo 2';font-weight:700;font-size:15px;background:none;border:none;color:#C7D1E6;padding:8px 16px;border-radius:10px;cursor:pointer;transition:.15s}
+nav button:hover{color:#fff;background:rgba(255,255,255,.08)}
+nav button.active{background:var(--gold);color:var(--ink)}
+nav button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* ── Page scaffolding ── */
+main{padding:28px 0 60px}
+.page{display:none}
+.page.show{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.page-h{margin:4px 0 6px;font-size:32px}
+.lede{color:var(--muted);max-width:720px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}.page-h{font-size:26px}}
+
+/* Grade colour system (signature) */
+.tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.6px;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+.t-prek{background:var(--prek-soft);color:var(--prek)}
+.t-kg1{background:var(--kg1-soft);color:var(--kg1)}
+.t-kg2{background:var(--kg2-soft);color:var(--kg2)}
+.t-gold{background:var(--gold-soft);color:#9A7100}
+
+/* ── Dashboard ── */
+.hero{background:linear-gradient(120deg,var(--ink) 0%,#2C3D6B 100%);border-radius:20px;color:#fff;padding:30px 28px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;margin-bottom:20px}
+.hero h1{color:#fff;font-size:30px;margin:6px 0 8px}
+.hero p{color:#C7D1E6;max-width:520px}
+.hero .eyebrow{color:var(--gold)}
+.term-chip{display:inline-block;margin-top:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
+.cycle{display:flex;flex-direction:column;gap:8px}
+.cycle .step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px}
+.cycle .n{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex:none}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.stat{padding:18px 20px}
+.stat .num{font-family:'Baloo 2';font-size:34px;font-weight:800;color:var(--ink)}
+.stat .lbl{font-size:13px;color:var(--muted);font-weight:700}
+.stat.accent{border-top:4px solid var(--gold)}
+.stat.p{border-top:4px solid var(--prek)}.stat.o{border-top:4px solid var(--kg1)}.stat.v{border-top:4px solid var(--kg2)}
+
+.section-h{display:flex;align-items:baseline;justify-content:space-between;margin:30px 0 14px}
+.section-h h2{font-size:22px}
+.section-h .hint{font-size:13px;color:var(--muted);font-weight:700}
+
+/* bar chart */
+.chart{display:flex;align-items:flex-end;gap:10px;height:190px;padding:10px 6px 0}
+.bar{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.bar .col{width:100%;max-width:44px;border-radius:8px 8px 4px 4px;position:relative;transition:height .5s ease}
+.bar .val{font-size:12px;font-weight:800;color:var(--ink)}
+.bar .cls{font-size:11.5px;font-weight:800;color:var(--muted)}
+.legend{display:flex;gap:16px;margin-top:12px;font-size:13px;font-weight:700;color:var(--muted);flex-wrap:wrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+
+.star-card{display:flex;gap:12px;align-items:flex-start;padding:16px 18px}
+.medal{font-size:26px;flex:none}
+.star-card .who{font-weight:800;color:var(--ink)}
+.star-card .what{font-size:13px;color:var(--muted);font-weight:600}
+
+.hl-list{list-style:none}
+.hl-list li{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-weight:600}
+.hl-list li:last-child{border:none}
+.hl-list .ico{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
+
+/* ── Reading plan ── */
+.plan-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.plan-controls label{font-weight:800;font-family:'Baloo 2';color:var(--ink)}
+select{font-family:'Nunito';font-weight:700;font-size:15px;padding:10px 38px 10px 14px;border-radius:12px;border:2px solid var(--line);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231E2A4A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;appearance:none;color:var(--ink);cursor:pointer}
+select:focus-visible{outline:2px solid var(--gold)}
+.class-tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.grade-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.grade-tabs button{font-family:'Baloo 2';font-weight:800;font-size:16px;border:2px solid var(--line);background:#fff;color:var(--muted);padding:12px 22px;border-radius:14px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:8px}
+.grade-tabs button .em{font-size:19px}
+.grade-tabs button.on-prek{color:var(--prek)}.grade-tabs button.on-kg1{color:var(--kg1)}.grade-tabs button.on-kg2{color:var(--kg2)}
+.grade-tabs button.sel.on-prek{background:var(--prek);border-color:var(--prek);color:#fff}
+.grade-tabs button.sel.on-kg1{background:var(--kg1);border-color:var(--kg1);color:#fff}
+.grade-tabs button.sel.on-kg2{background:var(--kg2);border-color:var(--kg2);color:#fff}
+.strat-head{border-top:5px solid var(--gold);padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.strat-head h3{font-size:24px;margin:6px 0 4px}
+.strat-head p{color:var(--muted);font-weight:600}
+.sblock h4{font-size:15px;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.sblock{margin-bottom:20px}
+.sblock ul{padding-left:19px}
+.sblock li{margin-bottom:5px}
+.progress-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:800;font-family:'Baloo 2';font-size:15px}
+.progress-strip .pstep{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:8px 16px}
+.progress-strip .parrow{color:var(--muted);font-size:18px}
+.overview-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.overview-strip span{font-size:13px;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--ink2)}
+.class-tabs button{flex:none;font-family:'Baloo 2';font-weight:700;font-size:14px;border:2px solid var(--line);background:#fff;color:var(--muted);padding:7px 15px;border-radius:999px;cursor:pointer;transition:.15s}
+.class-tabs button:hover{border-color:currentColor}
+.class-tabs button.on-prek{color:var(--prek)}.class-tabs button.on-kg1{color:var(--kg1)}.class-tabs button.on-kg2{color:var(--kg2)}
+.class-tabs button.sel.on-prek{background:var(--prek);border-color:var(--prek);color:#fff}
+.class-tabs button.sel.on-kg1{background:var(--kg1);border-color:var(--kg1);color:#fff}
+.class-tabs button.sel.on-kg2{background:var(--kg2);border-color:var(--kg2);color:#fff}
+.plan-card{border-top:5px solid var(--gold)}
+.plan-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:18px}
+.plan-head h3{font-size:23px;margin-top:4px}
+.plan-meta{font-size:13px;color:var(--muted);font-weight:700}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+.pblock h4{font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pblock .em{font-size:16px}
+.pblock ul{padding-left:20px}
+.pblock li{margin-bottom:5px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;color:var(--ink2)}
+.files{list-style:none}
+.files li{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-weight:700;font-size:14px;background:#fff}
+.files .fico{flex:none;width:30px;height:30px;border-radius:8px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:15px}
+.files .src{margin-left:auto;font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.cycle-line{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.cycle-line span{font-size:12.5px;font-weight:800;padding:5px 12px;border-radius:999px;background:var(--gold-soft);color:#9A7100}
+.cycle-line .arrow{background:none;color:var(--muted);padding:5px 0}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font-family:'Baloo 2';font-weight:700;text-align:left;color:var(--ink);padding:10px 12px;border-bottom:2px solid var(--line);font-size:14px}
+td{padding:10px 12px;border-bottom:1px solid var(--line);font-weight:600}
+tr:last-child td{border:none}
+.growth-pos{color:var(--prek);font-weight:800}
+.table-scroll{overflow-x:auto}
+
+/* ── Class list ── */
+.class-card{padding:0;overflow:hidden}
+.class-card summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 20px}
+.class-card summary::-webkit-details-marker{display:none}
+.class-card summary .grow{flex:1}
+.class-card summary .name{font-family:'Baloo 2';font-weight:800;font-size:18px;color:var(--ink)}
+.class-card summary .count{font-size:13px;color:var(--muted);font-weight:700}
+.class-card .bar-strip{width:6px;align-self:stretch;flex:none}
+.class-card[open] .caret{transform:rotate(90deg)}
+.caret{transition:.2s;color:var(--muted);font-weight:800}
+.students{columns:2;gap:24px;padding:0 20px 18px;font-size:14px}
+.students div{break-inside:avoid;padding:4px 0;border-bottom:1px dashed var(--line);font-weight:600}
+@media(max-width:560px){.students{columns:1}}
+
+/* ── Activities & resources ── */
+.act-card{border-top:5px solid var(--line)}
+.act-card.b-prek{border-color:var(--prek)}.act-card.b-kg1{border-color:var(--kg1)}.act-card.b-kg2{border-color:var(--kg2)}.act-card.b-gold{border-color:var(--gold)}
+.act-card h3{font-size:19px;margin:8px 0 8px}
+.act-card p{color:var(--muted);font-weight:600;font-size:14.5px}
+.act-card ul{padding-left:18px;margin-top:8px;font-size:14.5px}
+.act-card li{margin-bottom:4px}
+.folder{font-family:'Nunito';background:var(--ink);color:#D7E0F2;border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.9;font-weight:600}
+.folder b{color:var(--gold)}
+
+footer{background:var(--ink);color:#B9C4DB;padding:26px 0;font-size:13.5px;font-weight:600}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.note{background:var(--gold-soft);border:1px solid #F0DFAE;border-radius:12px;padding:12px 16px;font-size:13.5px;font-weight:700;color:#7A5B00;margin-top:16px}
+.timing-strip{display:flex;gap:0;align-items:stretch;flex-wrap:wrap;margin-bottom:22px}
+.timing-strip .tstep{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);padding:18px 16px;text-align:center;position:relative}
+.timing-strip .tstep:first-child{border-radius:16px 0 0 16px}
+.timing-strip .tstep:last-child{border-radius:0 16px 16px 0}
+.timing-strip .tstep:not(:last-child)::after{content:'›';position:absolute;right:-14px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:800;color:var(--muted);z-index:2}
+.timing-strip .ticon{font-size:26px;margin-bottom:6px}
+.timing-strip .tmin{font-family:'Baloo 2';font-weight:800;font-size:16px;color:var(--ink)}
+.timing-strip .tlbl{font-size:12.5px;color:var(--muted);font-weight:700}
+@media(max-width:760px){.timing-strip{flex-direction:column}.timing-strip .tstep:first-child,.timing-strip .tstep:last-child{border-radius:16px}.timing-strip .tstep:not(:last-child)::after{content:'⌄';right:50%;top:auto;bottom:-14px;transform:translateX(50%)}}
+.remember{background:linear-gradient(120deg,var(--ink) 0%,#2C3D6B 100%);color:#fff;border-radius:18px;padding:26px 30px;text-align:center;margin-top:26px}
+.remember p{color:#D7E0F2;font-weight:700;font-size:16px;max-width:640px;margin:0 auto}
+.remember b{font-family:'Baloo 2';color:var(--gold);font-size:19px}
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+@media(max-width:860px){.tech-grid{grid-template-columns:1fr 1fr}}
+/* Modern Timing Blueprint tiles */
+.tblock-list{display:flex;flex-direction:column;gap:20px;margin:20px 4px 6px}
+.tblock{display:flex;align-items:stretch;position:relative}
+.tnum{position:absolute;left:-12px;top:-12px;z-index:3;width:38px;height:38px;border-radius:11px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2';font-weight:800;font-size:14px;transform:rotate(-8deg);box-shadow:0 3px 8px rgba(30,42,74,.18)}
+.ticonpanel{width:74px;flex:none;display:flex;align-items:center;justify-content:center;font-size:28px;border-radius:18px 0 0 18px;color:#fff}
+.tcontent{flex:1;border-radius:0 18px 18px 0;padding:14px 20px 14px 26px;min-width:0}
+.tcontent h4{font-family:'Baloo 2';font-size:15.5px;letter-spacing:.2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;color:var(--ink)}
+.ttime{font-size:11.5px;background:rgba(255,255,255,.65);padding:3px 11px;border-radius:999px;font-weight:800;color:var(--ink)}
+.tcontent ul{padding-left:18px;font-size:13.5px;color:var(--ink2);font-weight:600}
+.tcontent ul li{margin-bottom:2px}
+.tn-gold,.tp-gold{background:var(--gold)}.tc-gold{background:var(--gold-soft)}
+.tn-kg1,.tp-kg1{background:var(--kg1)}.tc-kg1{background:var(--kg1-soft)}
+.tn-kg2,.tp-kg2{background:var(--kg2)}.tc-kg2{background:var(--kg2-soft)}
+.tn-prek,.tp-prek{background:var(--prek)}.tc-prek{background:var(--prek-soft)}
+/* Modern Embedding Technology toggle tiles */
+.tech-toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+@media(max-width:700px){.tech-toggle-grid{grid-template-columns:1fr}}
+.tglow{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 10px 12px 20px;box-shadow:var(--shadow);font-family:'Baloo 2';font-weight:700;font-size:14px;color:var(--ink)}
+.toggle-pill{width:50px;height:27px;border-radius:999px;position:relative;flex:none}
+.toggle-pill .knob{position:absolute;top:3px;right:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.tog-gold{background:var(--gold)}.tog-kg1{background:var(--kg1)}.tog-kg2{background:var(--kg2)}.tog-prek{background:var(--prek)}
+.tech-item{text-align:center;padding:16px 10px}
+.tech-item .ti{width:46px;height:46px;border-radius:50%;background:var(--kg2-soft);color:var(--kg2);display:flex;align-items:center;justify-content:center;font-size:21px;margin:0 auto 10px}
+.tech-item h5{font-family:'Baloo 2';font-size:14.5px;color:var(--ink);margin-bottom:4px}
+.tech-item p{font-size:12.5px;color:var(--muted);font-weight:600}
+.onedrive-embed{border-radius:14px;overflow:hidden;border:2px dashed var(--line)}
+.embed-placeholder{background:var(--bg);min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:30px;color:var(--muted);font-weight:600}
+.embed-placeholder .ep-icon{font-size:38px}
+.embed-placeholder b{color:var(--ink);font-family:'Baloo 2'}
+.admin-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 22px}
+.admin-btn{font-family:'Baloo 2';font-weight:800;font-size:14px;border:2px solid var(--line);background:#fff;color:var(--ink2);padding:9px 18px;border-radius:12px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+.admin-btn:hover{border-color:var(--kg2)}
+.admin-btn.active{background:var(--kg2);border-color:var(--kg2);color:#fff}
+.admin-btn.save{background:var(--prek);border-color:var(--prek);color:#fff}
+.admin-btn.reset{color:var(--kg1);border-color:var(--kg1)}
+.admin-btn.exitnosave{background:#fff;color:var(--muted);border-color:var(--line)}
+.admin-btn.exitnosave:hover{border-color:#C0392B;color:#C0392B}
+.admin-btn[disabled]{opacity:.4;cursor:not-allowed}
+.edit-hint{font-size:13px;font-weight:800;color:var(--muted)}
+.edit-hint.saved{color:var(--prek)}
+#stratCard.editing{outline:3px dashed var(--gold);outline-offset:6px;background:#FFFDF6;cursor:text}
+#stratCard.editing:focus{outline-color:var(--kg2)}
+.yt-thumb{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:16/9;background:#000;margin-top:10px}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82;transition:.15s}
+.yt-thumb:hover img{opacity:1}
+.yt-thumb .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(0,0,0,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;pointer-events:none}
+.yt-thumb .cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:12.5px;font-weight:700;padding:20px 10px 8px;pointer-events:none}
+.yt-thumb iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.ort-filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.ort-filters input[type="text"]{font-family:'Nunito';font-weight:700;font-size:14.5px;padding:10px 14px;border-radius:12px;border:2px solid var(--line);flex:1;min-width:180px}
+.ort-filters input[type="text"]:focus{outline:none;border-color:var(--kg2)}
+.ort-filters select{min-width:150px}
+.ort-tag{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 9px;border-radius:999px}
+.ort-tag.fiction{background:var(--kg1-soft);color:var(--kg1)}
+.ort-tag.nonfiction{background:var(--kg2-soft);color:var(--kg2)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* ── Kindergarten visual refresh ── */
+:root{--cream:#FFF9EE;--sky:#EAF6FF;--mint:#EAF8F1;--lav:#F1EEFF;--coral:#FFF0EC;--purple:#7867D8;--teal:#2F9C8A}
+body{background:linear-gradient(180deg,#FFFDF8 0%,#F6F8FC 42%,#F7FAFC 100%);font-size:15.5px}
+header{background:rgba(30,42,74,.97);backdrop-filter:blur(12px)}
+.logo{border-radius:15px;box-shadow:0 5px 12px rgba(245,179,1,.22)}
+.site-title{font-size:21px;letter-spacing:.1px}.site-sub{letter-spacing:.8px}
+nav{padding-bottom:11px;gap:5px}
+nav button{font-size:14px;padding:8px 13px;border-radius:999px}
+main{padding-top:30px}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:34px 32px;background:linear-gradient(135deg,#1E2A4A 0%,#3C4F83 72%,#5669A0 100%);box-shadow:0 16px 34px rgba(30,42,74,.14)}
+.hero:after{content:'✦  ✿  ✦';position:absolute;right:28px;top:12px;color:rgba(255,255,255,.16);font-size:54px;letter-spacing:8px;transform:rotate(8deg)}
+.hero h1{font-size:36px;max-width:620px}.hero p{font-size:16px;line-height:1.7}.term-chip{background:rgba(255,255,255,.13)}
+.card{border-radius:20px;box-shadow:0 6px 20px rgba(30,42,74,.06);transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{box-shadow:0 10px 28px rgba(30,42,74,.09)}
+.reading-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px}
+.reading-pillars>div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 15px;display:grid;grid-template-columns:36px 1fr;column-gap:9px;align-items:center;box-shadow:0 4px 14px rgba(30,42,74,.045)}
+.reading-pillars span{grid-row:1/3;font-size:24px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--cream);border-radius:12px}
+.reading-pillars b{font-family:'Baloo 2';font-size:16px;color:var(--ink)}
+.reading-pillars small{font-size:11.5px;color:var(--muted);font-weight:700}
+.stat{min-height:92px}.stat .num{font-size:31px}
+.section-h{margin-top:34px}.section-h h2{font-size:23px}
+.plan-card,.strat-head{border-top-width:6px;border-radius:20px}
+.grade-tabs button{box-shadow:0 3px 10px rgba(30,42,74,.05)}
+.act-card{border-top-width:6px}.act-card h3{font-size:21px}
+.tag{letter-spacing:.8px}
+.note{border-radius:14px}
+.remember{border-radius:22px;box-shadow:0 12px 28px rgba(30,42,74,.1)}
+.tblock{filter:drop-shadow(0 4px 8px rgba(30,42,74,.05))}.tcontent{padding-top:16px;padding-bottom:16px}
+.files li{transition:.15s}.files li:hover{transform:translateX(2px);border-color:#CDD6E6}
+@media(max-width:860px){.reading-pillars{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hero{padding:27px 22px}.hero h1{font-size:30px}.hero:after{display:none}.reading-pillars{grid-template-columns:1fr}.site-title{font-size:18px}.site-sub{font-size:10px}}
+
+</style>
+</head>
+<body>
+<div id="adminBar" class="admin-topbar">
+  <div class="admin-topbar-inner">
+    <span id="adminLockedView">
+      <span class="admin-icon">🔒</span> <span class="admin-label">Admin</span>
+      <input type="password" id="adminPass" placeholder="Passcode" maxlength="8" inputmode="numeric" aria-label="Admin passcode">
+      <button id="adminLoginBtn" type="button">Unlock</button>
+      <span id="adminMsg" class="admin-msg" role="alert"></span>
+    </span>
+    <span id="adminUnlockedView" style="display:none">
+      <span class="admin-icon">🔓</span> <span class="admin-label">Admin Mode Active — editing enabled on Weekly Plan, Our Approach &amp; Teacher Review</span>
+      <button id="adminLogoutBtn" type="button">Log out</button>
+    </span>
+  </div>
+</div>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="logo">📖</div>
+      <div>
+        <div class="site-title">Little Readers · Kindergarten Reading</div>
+        <div class="site-sub">AMITY SCHOOL DUBAI · PLAY · READ · TALK · GROW</div>
+      </div>
+    </div>
+    <nav id="nav">
+      <button data-page="home" class="active">Home</button>
+      <button data-page="plan">Weekly Plan</button>
+      <button data-page="strategies">Our Approach</button>
+      <button data-page="block">Reading Time</button>
+      <button data-page="activities">Fun &amp; Phonics</button>
+      <button data-page="classes">Our Readers</button>
+      <button data-page="assessment">Progress</button>
+      <button data-page="review">Teacher Review</button>
+      <button data-page="resources">Book Shelf</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ══════════ HOME / DASHBOARD ══════════ -->
+<section class="page show" id="page-home">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Term 1 Dashboard · 1 Apr – 30 Jun 2026</div>
+      <h1>Big stories. Little readers. Bright beginnings. 🌟</h1>
+      <p>Our reading programme helps young children become confident readers through stories, phonics, conversation, guided reading and joyful practice. Every child is supported from where they are and encouraged to grow one small step at a time.</p>
+      <span class="term-chip">📅 Term 1 · June Week 3</span>
+    </div>
+    <div class="cycle" aria-label="Weekly reading cycle">
+      <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
+      <div class="step"><span class="n">2</span> Guided Reading — small groups</div>
+      <div class="step"><span class="n">3</span> Phonics — blend &amp; decode</div>
+      <div class="step"><span class="n">4</span> Writing — respond &amp; reflect</div>
+    </div>
+  </div>
+
+  <div class="reading-pillars" aria-label="What children practise">
+    <div><span>📚</span><b>Love books</b><small>Listen, browse &amp; choose</small></div>
+    <div><span>🔤</span><b>Hear sounds</b><small>Blend, segment &amp; decode</small></div>
+    <div><span>💬</span><b>Talk about stories</b><small>Predict, explain &amp; retell</small></div>
+    <div><span>🌱</span><b>Grow confidence</b><small>Celebrate every small step</small></div>
+  </div>
+
+  <div class="grid g4">
+    <div class="card stat accent"><div class="num">262</div><div class="lbl">Readers across 13 classes</div></div>
+    <div class="card stat p"><div class="num">2</div><div class="lbl">Pre-KG classes · Picture Walk twice weekly</div></div>
+    <div class="card stat o"><div class="num">+84L</div><div class="lbl">KG1 average Lexile growth this term</div></div>
+    <div class="card stat v"><div class="num">+38L</div><div class="lbl">KG2 average Lexile growth this term</div></div>
+  </div>
+
+  <div class="section-h"><h2>📈 Growing as Readers</h2><span class="hint">Rosen LevelUp · Lexile progress</span></div>
+  <div class="card">
+    <div class="chart" id="growthChart"></div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--kg1)"></span>KG1 classes</span>
+      <span><span class="dot" style="background:var(--kg2)"></span>KG2 classes</span>
+      <span>💡 A negative Lexile (BR) means Beginning Reader — growth matters more than level at this stage.</span>
+    </div>
+  </div>
+
+  <div class="section-h"><h2>🌟 Celebrate the Journey</h2><span class="hint">Growth, effort and reading confidence</span></div>
+  <div class="grid g3">
+    <div class="card star-card"><span class="medal">🥇</span><div><div class="who">Eshal Iqbal</div><div class="what">KG1 C · grew <b class="growth-pos">+795L</b> — biggest leap in the Foundation Stage!</div></div></div>
+    <div class="card star-card"><span class="medal">🥈</span><div><div class="who">Masooma Fatima Syeda</div><div class="what">KG1 A · grew <b class="growth-pos">+530L</b> this term</div></div></div>
+    <div class="card star-card"><span class="medal">🥉</span><div><div class="who">Keeona Ann Almeida</div><div class="what">KG2 A · grew <b class="growth-pos">+335L</b> and appears on both Top lists</div></div></div>
+  </div>
+
+  <div class="section-h"><h2>This Week &amp; Announcements</h2></div>
+  <div class="grid g2">
+    <div class="card">
+      <h3 style="font-size:18px;margin-bottom:10px">✨ Highlights — June Week 3</h3>
+      <ul class="hl-list">
+        <li><span class="ico t-prek">🖼️</span><div><b>Pre-KG:</b> Picture Walk &amp; Read Aloud in the Reading Room — new June storybook preview.</div></li>
+        <li><span class="ico t-kg1">🐻</span><div><b>KG1:</b> <i>Goldilocks and the 3 Bears</i> + Blend &amp; Read “Story of Pip” with reading stations.</div></li>
+        <li><span class="ico t-kg2">🦉</span><div><b>KG2:</b> Guided Reading with ORT June set — <i>Pets</i>, <i>At the Animal Park</i>, <i>Barn Owls</i> by level group.</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="font-size:18px;margin-bottom:10px">📣 For Parents</h3>
+      <ul class="hl-list">
+        <li><span class="ico t-gold">💻</span><div>Rosen LevelUp weekly book is assigned — 20 minutes of reading at home, QR login badges are in school diaries.</div></li>
+        <li><span class="ico t-gold">🌟</span><div>Star Reader certificates go home this Thursday — celebrate your child’s reading wins!</div></li>
+        <li><span class="ico t-gold">📚</span><div>Soft copies of this week’s reading materials are shared via the class OneDrive folder.</div></li>
+      </ul>
+      <div class="note">Reading Room contact: Ms. Anayeza (Reading Coach) · reading@amityschooldubai.example</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ READING PLAN ══════════ -->
+<section class="page" id="page-plan">
+  <div class="eyebrow">Weekly Planner</div>
+  <h1 class="page-h">Weekly Reading Plan</h1>
+  <p class="lede">Choose a week and class to see the learning focus, story, phonics, vocabulary, activities and materials planned for our young readers.</p>
+
+  <div class="plan-controls">
+    <label for="weekSel">Week:</label>
+    <select id="weekSel" aria-label="Choose week">
+      <option value="w1">June · Week 1</option>
+      <option value="w2">June · Week 2</option>
+      <option value="w3" selected>June · Week 3</option>
+    </select>
+  </div>
+  <div class="class-tabs" id="classTabs" role="tablist" aria-label="Choose class"></div>
+
+  <div class="card plan-card" id="planCard"></div>
+
+  <div class="admin-bar">
+    <button class="admin-btn admin-only" id="planEditToggle" type="button">✏️ Admin: Edit This Plan</button>
+    <button class="admin-btn save admin-only" id="planSaveBtn" type="button" style="display:none">💾 Save &amp; Exit</button>
+    <button class="admin-btn exitnosave admin-only" id="planExitNoSaveBtn" type="button" style="display:none">🚪 Exit without Saving</button>
+    <button class="admin-btn reset admin-only" id="planResetBtn" type="button" style="display:none">↺ Reset to Default</button>
+    <span class="edit-hint" id="planEditHint" style="display:none">Click into any text above to edit it.</span>
+    <span class="edit-hint guest-only">🔒 Unlock Admin at the top of the page to edit this page</span>
+  </div>
+</section>
+<!-- ══════════ STRATEGIES (AMITY READING PROGRAMME) ══════════ -->
+<section class="page" id="page-strategies">
+  <div class="eyebrow">Amity Reading Programme · Inspection File · KHDA + EYFS Aligned</div>
+  <h1 class="page-h">Our Approach to Early Reading</h1>
+  <p class="lede">We build reading step by step: children first develop language, listening and book behaviours, then strengthen phonics and word reading, and gradually move towards fluent, purposeful reading with understanding.</p>
+
+  <div class="card" style="margin-bottom:22px">
+    <h3 style="font-size:18px;margin-bottom:6px">🎯 Programme Objectives</h3>
+    <div class="overview-strip">
+      <span>Early language &amp; communication</span><span>Foundational reading skills</span><span>Comprehension &amp; critical thinking</span><span>Differentiated learning</span><span>Home-school reading connections</span>
+    </div>
+  </div>
+
+  <div class="grade-tabs" id="gradeTabs" role="tablist" aria-label="Choose grade">
+    <button data-g="prek" class="on-prek sel" aria-selected="true"><span class="em">🖼️</span> Pre-KG</button>
+    <button data-g="kg1" class="on-kg1" aria-selected="false"><span class="em">🔤</span> KG1</button>
+    <button data-g="kg2" class="on-kg2" aria-selected="false"><span class="em">🦉</span> KG2</button>
+  </div>
+
+  <div class="admin-bar">
+    <button class="admin-btn admin-only" id="editToggle" type="button">✏️ Admin: Edit Page</button>
+    <button class="admin-btn save admin-only" id="saveBtn" type="button" style="display:none">💾 Save &amp; Exit</button>
+    <button class="admin-btn exitnosave admin-only" id="exitNoSaveBtn" type="button" style="display:none">🚪 Exit without Saving</button>
+    <button class="admin-btn reset admin-only" id="resetBtn" type="button" style="display:none">↺ Reset to Default</button>
+    <span class="edit-hint" id="editHint" style="display:none">Click into any text above to edit it.</span>
+    <span class="edit-hint guest-only">🔒 Unlock Admin at the top of the page to edit this page</span>
+  </div>
+
+  <div class="card" id="stratCard"></div>
+
+  <div class="section-h"><h2>📋 Assessment Tools</h2><span class="hint">Used across all grades</span></div>
+  <div class="grid g3">
+    <div class="card sblock"><h4>🔍 Observation-based</h4><ul><li>Observation checklists</li><li>Oral questioning</li></ul></div>
+    <div class="card sblock"><h4>📝 Structured checks</h4><ul><li>Reading rubrics</li><li>Mini reading tests</li></ul></div>
+    <div class="card sblock"><h4>💻 Digital data</h4><ul><li>Rosen LevelUp platform performance data</li></ul></div>
+  </div>
+
+  <div class="section-h"><h2>📊 Tracking, Monitoring &amp; Resources</h2></div>
+  <div class="grid g2">
+    <div class="card sblock"><h4>📈 Tracking &amp; Monitoring</h4><ul><li>Individual student progress trackers</li><li>Group-wise reading level tracking</li><li>Weekly monitoring records</li><li>Teacher-maintained assessment logs</li></ul></div>
+    <div class="card sblock"><h4>📚 Reading Resources</h4><ul><li>Picture books &amp; Big books</li><li>Oxford Reading Tree (ORT) books</li><li>Pleasure reading books</li><li>Digital platform (Rosen LevelUp)</li></ul></div>
+  </div>
+
+  <div class="section-h"><h2>⭐ Key Strengths &amp; Impact</h2></div>
+  <div class="grid g2">
+    <div class="card sblock">
+      <h4>💪 Key Strengths of the Programme</h4>
+      <ul><li>Structured and progressive approach</li><li>Strong assessment and tracking system</li><li>Effective use of digital tools</li><li>Differentiated instruction</li><li>Targeted intervention support</li><li>Strong home-school partnership</li></ul>
+    </div>
+    <div class="card sblock">
+      <h4>📐 Impact Measures (KHDA requirement)</h4>
+      <ul><li>Improvement in reading levels (Rosen LevelUp data)</li><li>Teacher assessment records &amp; guided reading progress</li><li>Student ability to predict, explain and retell</li></ul>
+      <div class="note">✅ EYFS-aligned additions: Phonics clarity · EYFS mapping · Assessment-for-Learning next steps · Child-led learning</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ READING BLOCK GUIDE ══════════ -->
+<section class="page" id="page-block">
+  <div class="eyebrow">Teacher Reference · Foundation Stage Pacing</div>
+  <h1 class="page-h">A Happy, Focused Reading Session</h1>
+  <p class="lede">Each session balances teacher modelling, small-group support, independent practice and conversation. The routine is predictable enough to make children feel secure, but playful enough to keep them curious.</p>
+
+  <div class="card" style="margin-bottom:20px">
+    <h3 style="font-size:17px;margin-bottom:4px">⏱️ Timing Blueprint — a Foundation Stage session</h3>
+    <p style="color:var(--muted);font-weight:600;font-size:13.5px;margin-bottom:6px">Modernised from the classic 4-part reading block format.</p>
+    <div class="tblock-list">
+      <div class="tblock">
+        <div class="tnum tn-gold">01</div>
+        <div class="ticonpanel tp-gold">⭐</div>
+        <div class="tcontent tc-gold"><h4>MINI LESSON <span class="ttime">5–8 MIN</span></h4>
+          <ul><li>One focused skill, whole class</li><li>Short, playful, tied to the week's book</li></ul>
+        </div>
+      </div>
+      <div class="tblock">
+        <div class="tnum tn-kg1">02</div>
+        <div class="ticonpanel tp-kg1">👥</div>
+        <div class="tcontent tc-kg1"><h4>SMALL GROUPS &amp; CONFERENCES <span class="ttime">15–20 MIN</span></h4>
+          <ul><li>Meet each Lexile-level group</li><li>Others rotate through independent centers</li></ul>
+        </div>
+      </div>
+      <div class="tblock">
+        <div class="tnum tn-kg2">03</div>
+        <div class="ticonpanel tp-kg2">📖</div>
+        <div class="tcontent tc-kg2"><h4>INDEPENDENT / LEVELUP READING <span class="ttime">15–20 MIN</span></h4>
+          <ul><li>Choice within levelled books</li><li>Rosen LevelUp for KG1 &amp; KG2</li></ul>
+        </div>
+      </div>
+      <div class="tblock">
+        <div class="tnum tn-prek">04</div>
+        <div class="ticonpanel tp-prek">💬</div>
+        <div class="tcontent tc-prek"><h4>SHARE &amp; REFLECT <span class="ttime">5 MIN</span></h4>
+          <ul><li>Student share-outs, reflect &amp; celebrate</li><li>Set a small goal for next time</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="note">🕐 Pre-KG runs a shorter 25–30 min version twice a week; KG1 &amp; KG2 run the full ~45 min block once a week in the Reading Room, plus 20 minutes of in-class Rosen LevelUp reading.</div>
+  </div>
+
+  <div class="grid g4">
+    <div class="card act-card b-gold">
+      <span class="tag t-gold">1 · Whole class</span>
+      <h3 style="font-size:18px">⭐ Mini Lesson</h3>
+      <p>Teach one focused skill to the whole group — short, playful and tied to that week's book.</p>
+      <ul><li>Keep it short and interactive</li><li>Use a song, action or picture prompt</li><li>Connect to the class reading goal</li></ul>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">2 · Small groups</span>
+      <h3 style="font-size:18px">👥 Small Groups &amp; Conferences</h3>
+      <p>Meet each Lexile-level group while others explore independently.</p>
+      <ul><li>Targeted, level-based instruction</li><li>Differentiate by need</li><li>Use assessment data to form groups</li></ul>
+    </div>
+    <div class="card act-card b-kg2">
+      <span class="tag t-kg2">3 · Independent</span>
+      <h3 style="font-size:18px">📖 Independent Reading</h3>
+      <p>Build reading stamina and confidence with a book of their own choosing.</p>
+      <ul><li>Choice within levelled books</li><li>Builds fluency &amp; comprehension</li><li>Rosen LevelUp for KG1/KG2</li></ul>
+    </div>
+    <div class="card act-card b-prek">
+      <span class="tag t-prek">4 · Whole class</span>
+      <h3 style="font-size:18px">💬 Share &amp; Reflect</h3>
+      <p>Bring everyone back together to celebrate what was read.</p>
+      <ul><li>Student share-outs</li><li>Reflect on what was learned</li><li>Set a small goal for next time</li></ul>
+    </div>
+  </div>
+
+  <div class="section-h"><h2>💻 Embedding Technology</h2><span class="hint">Technology should support instruction, not replace it</span></div>
+  <div class="card">
+    <div class="tech-toggle-grid">
+      <div class="tglow"><span>📱 Digital Read-Alouds</span><span class="toggle-pill tog-gold"><span class="knob"></span></span></div>
+      <div class="tglow"><span>🎧 Listening to Reading</span><span class="toggle-pill tog-kg2"><span class="knob"></span></span></div>
+      <div class="tglow"><span>🕹️ Phonics Games</span><span class="toggle-pill tog-kg1"><span class="knob"></span></span></div>
+      <div class="tglow"><span>📶 Leveled Reading (LevelUp)</span><span class="toggle-pill tog-prek"><span class="knob"></span></span></div>
+      <div class="tglow"><span>📝 Reading Log</span><span class="toggle-pill tog-gold"><span class="knob"></span></span></div>
+      <div class="tglow"><span>🌐 Online Libraries</span><span class="toggle-pill tog-kg2"><span class="knob"></span></span></div>
+      <div class="tglow"><span>🃏 Interactive Task Cards</span><span class="toggle-pill tog-kg1"><span class="knob"></span></span></div>
+      <div class="tglow"><span>🎬 Student Creation</span><span class="toggle-pill tog-prek"><span class="knob"></span></span></div>
+    </div>
+    <div class="note">✅ All switched on across our Reading Room — each tool supports one of the four reading-block stages above rather than replacing teacher instruction.</div>
+  </div>
+
+  <div class="section-h"><h2>🗂️ Classroom Set-Up Essentials</h2></div>
+  <div class="grid g2">
+    <div class="card sblock">
+      <h4>📚 The reading corner</h4>
+      <ul><li>Book bins organised by level or genre</li><li>A cozy, inviting reading spot</li><li>Clear routines children can follow independently</li><li>Anchor charts for support during centers</li></ul>
+    </div>
+    <div class="card sblock">
+      <h4>👍 Tips for success</h4>
+      <ul><li>Keep routines consistent, day to day</li><li>Let assessment data guide grouping</li><li>Build a relationship with every reader</li><li>Celebrate growth, not just level</li><li>Keep the plan simple and sustainable</li></ul>
+    </div>
+  </div>
+
+  <div class="remember">
+    <p>A strong reading block isn't about doing more — it's about doing what <b>matters most</b> for every reader in the room. 💙</p>
+  </div>
+  <div class="note" style="margin-top:16px">Timing framework adapted for Foundation Stage attention spans, informed by early-literacy reading-block practice (see The Mountain Teacher's <a href="https://www.themountainteacher.com/2022/04/set-up-a-reading-block-that-works/" target="_blank" rel="noopener">reading block guide</a>).</div>
+</section>
+
+<!-- ══════════ ACTIVITIES ══════════ -->
+<section class="page" id="page-activities">
+  <div class="eyebrow">Teaching &amp; Learning Strategies</div>
+  <h1 class="page-h">Fun, Phonics &amp; Reading Activities</h1>
+  <p class="lede">Young children learn to read best when reading feels meaningful, active and fun. These experiences build phonics, vocabulary, comprehension, confidence and a love of books.</p>
+
+  <div class="grid g2">
+    <div class="card act-card b-prek">
+      <span class="tag t-prek">All grades · Pre-reading</span>
+      <h3>🖼️ Picture Walk</h3>
+      <p>Learners preview the pictures before reading to predict the story, activate prior knowledge and build vocabulary. In KG2 this stretches into higher-order thinking questions.</p>
+      <ul><li>“Look at the cover — what do you see? What might happen?”</li><li>Doubles as a formative assessment tool for teachers</li><li>Pre-KG visits the Reading Room twice a week for Picture Walk + Read Aloud</li></ul>
+      <div class="yt-thumb" data-yt="5ISKUMy1980" role="button" tabindex="0" aria-label="Play video: Read Aloud demo">
+        <img src="https://img.youtube.com/vi/5ISKUMy1980/hqdefault.jpg" alt="Read Aloud demo video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Read Aloud demo: “Too Much Glue” (Storyline Online)</span>
+      </div>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">KG1 · Phonics</span>
+      <h3>🔤 Blend &amp; Read</h3>
+      <p>Phonics in action — learners blend phonemes into words and segment words back into sounds, moving from CVC words to simple sentences.</p>
+      <ul><li>This week: <i>Blend n Read — Story of Pip</i> (slides + printable)</li><li>Lowercase alphabet flashcards for letter–sound recall</li><li>Reading stations with a poster-guided rotation</li></ul>
+      <div class="yt-thumb" data-yt="4icYb-aTw9A" role="button" tabindex="0" aria-label="Play video: Jolly Phonics letter sounds">
+        <img src="https://img.youtube.com/vi/4icYb-aTw9A/hqdefault.jpg" alt="Jolly Phonics letter sounds video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Jolly Phonics: Letter Sounds s, a, t, i, p, n</span>
+      </div>
+    </div>
+    <div class="card act-card b-kg2">
+      <span class="tag t-kg2">KG2 · Small groups</span>
+      <h3>🦉 Guided Reading</h3>
+      <p>Teacher-supported reading in levelled groups using Oxford Reading Tree books. Students meet Biff, Chip, Kipper and Floppy while building fluency and comprehension.</p>
+      <ul><li>Beginner → <i>Pets</i> · Intermediate → <i>At the Animal Park</i> · Advanced → <i>Barn Owls</i></li><li>Comprehension talk: characters, setting, fiction vs non-fiction</li><li>Groups are formed from Lexile levels and refreshed each term</li></ul>
+      <div class="yt-thumb" data-yt="xUUAeOTXzi4" role="button" tabindex="0" aria-label="Play video: Guided Reading small groups">
+        <img src="https://img.youtube.com/vi/xUUAeOTXzi4/hqdefault.jpg" alt="Guided Reading small groups video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Guided Reading: Running Small Groups in the Classroom</span>
+      </div>
+    </div>
+    <div class="card act-card b-gold">
+      <span class="tag t-gold">Whole programme</span>
+      <h3>🌟 Star Reader Rewards</h3>
+      <p>Effort and growth get celebrated, not just level. Our reward system keeps motivation high across the Foundation Stage.</p>
+      <ul><li>Star Reader certificates for weekly reading champions</li><li>Top Growers &amp; Top Readers recognised every term</li><li>LevelUp completion certificates for digital reading streaks</li></ul>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">KG1 &amp; KG2 · Digital</span>
+      <h3>💻 Rosen LevelUp Reading</h3>
+      <p>20 minutes of in-class digital reading weekly. KG1 reads a whole-class weekly book linked to class themes; KG2 reads differentiated books by level.</p>
+      <ul><li>Baseline assessment sets each child’s starting Lexile</li><li>QR login badges make sign-in easy for little readers</li><li>Weekly assignment also shared for reading at home</li></ul>
+    </div>
+    <div class="card act-card b-prek">
+      <span class="tag t-prek">Intervention</span>
+      <h3>🌱 Sprout Readers Support</h3>
+      <p>Lower achievers are identified early and supported with additional pull-out reading sessions focused on phonics, decoding and comprehension.</p>
+      <ul><li>Small-group targeted practice</li><li>Progress reviewed against weekly monitoring records</li><li>Growth celebrated on the Top Growers list</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLASS LIST ══════════ -->
+<section class="page" id="page-classes">
+  <div class="eyebrow">Our Readers</div>
+  <h1 class="page-h">Our Young Readers</h1>
+  <p class="lede">Our reading community includes 262 children across 13 classes. Select a class to view its readers and support planning.</p>
+  <div id="classListWrap"></div>
+</section>
+
+<!-- ══════════ ASSESSMENT ══════════ -->
+<section class="page" id="page-assessment">
+  <div class="eyebrow">Term 1 · 1 Apr – 30 Jun 2026</div>
+  <h1 class="page-h">How We Track Reading Progress</h1>
+  <p class="lede">We look at the whole child — what they can read, understand, say, hear and do. Standardised reading data is combined with teacher observation, oral reading and NCF competency evidence to understand progress and plan the next step.</p>
+
+  <div class="grid g3" style="margin-bottom:20px">
+    <div class="card stat o"><div class="num">+84L</div><div class="lbl">KG1 mean class growth (5 classes)</div></div>
+    <div class="card stat v"><div class="num">+38L</div><div class="lbl">KG2 mean class growth (6 classes)</div></div>
+    <div class="card stat accent"><div class="num">22</div><div class="lbl">Students recognised as Top Growers / Top Readers</div></div>
+  </div>
+
+  <div class="section-h"><h2>🥇 Top Growers vs 🔵 Top Readers — by class</h2><span class="hint">Growers = biggest Lexile gain · Readers = highest ending Lexile</span></div>
+  <div class="card table-scroll">
+    <table>
+      <thead><tr><th>Class</th><th>Students</th><th>Avg growth</th><th>Top grower</th><th>Top reader (ending Lexile)</th></tr></thead>
+      <tbody id="assessRows"></tbody>
+    </table>
+    <div class="note">BR (e.g. BR225L) = Beginning Reader stage — expected for K1/K2. For BR readers, <b>growth</b> is the meaningful measure. Students on both lists are performing exceptionally well.</div>
+  </div>
+
+  <div class="section-h"><h2>🧩 What we assess (NCF Domain 1.1.4)</h2></div>
+  <div class="grid g3">
+    <div class="card act-card b-prek"><span class="tag t-prek">Pre-KG</span><h3>Early print &amp; sounds</h3><ul><li>Story recall &amp; retelling (C-9.5)</li><li>Beginning sounds, early blending (C-10.1)</li><li>Book handling &amp; print direction (C-10.2)</li><li>Shared Reading participation (C-10.5)</li></ul></div>
+    <div class="card act-card b-kg1"><span class="tag t-kg1">KG1</span><h3>Blending &amp; word reading</h3><ul><li>Comprehends read-aloud stories (C-9.5)</li><li>Blends &amp; segments phonemes (C-10.1)</li><li>Recognises all letters &amp; sounds (C-10.3)</li><li>Reads familiar sentences (C-10.4)</li></ul></div>
+    <div class="card act-card b-kg2"><span class="tag t-kg2">KG2</span><h3>Fluency &amp; comprehension</h3><ul><li>Retells stories in a different form (C-9.5)</li><li>Narrates own short stories (C-9.6)</li><li>Punctuation &amp; print concepts (C-10.2)</li><li>Reads 4–5 sound words &amp; sight words (C-10.3)</li></ul></div>
+  </div>
+  <div class="note" style="margin-top:18px">📋 Monthly rubric scores (1–5) are entered in the grade assessment workbooks — Pre-K, K1 and K2 Term 1 sheets — with class averages auto-calculated for KHDA reporting.</div>
+
+  <div class="section-h" id="assessment-methods"><h2>📐 How We Measure Reading</h2><span class="hint">Multiple sources of evidence · recorded throughout the year</span></div>
+  <div class="card" style="margin-bottom:22px">
+    <p style="color:var(--muted);font-weight:600;margin-bottom:6px">Reading progress is assessed through a combination of standardised reading measures, teacher observation, oral reading, and competency-based assessment to provide a well-rounded picture of each child's development.</p>
+    <div class="pgrid">
+      <div>
+        <div class="sblock"><h4>📊 Rosen LevelUp baseline &amp; Lexile tracking</h4><p style="font-weight:600;color:var(--ink2)">Children's reading ability is established through a Rosen LevelUp baseline, with Lexile measures used where appropriate to monitor reading growth and guide suitable reading levels and texts.</p></div>
+        <div class="sblock"><h4>👀 Teacher observation &amp; oral reading</h4><p style="font-weight:600;color:var(--ink2)">Teachers regularly observe children during reading, storytelling, phonics activities, and individual oral reading to assess accuracy, fluency, vocabulary, comprehension, confidence, and expression.</p></div>
+        <div class="sblock"><h4>🔤 Early literacy &amp; phonological skills</h4><p style="font-weight:600;color:var(--ink2)">Assessment includes recognition of sounds, beginning/middle/ending sounds, blending and segmenting, familiar word recognition, and basic print and book conventions.</p></div>
+        <div class="sblock"><h4>💬 Comprehension &amp; oral language</h4><p style="font-weight:600;color:var(--ink2)">Children are assessed on identifying characters and key events, sequencing and retelling stories, using vocabulary, answering questions, constructing sentences, and expressing their ideas.</p></div>
+      </div>
+      <div>
+        <div class="sblock"><h4>📋 NCF competency rubrics</h4><p style="font-weight:600;color:var(--ink2)">NCF-aligned competencies and learning outcomes are recorded monthly using age-appropriate progression levels to document individual development across key reading skills.</p></div>
+        <div class="sblock"><h4>✅ Teacher moderation</h4><p style="font-weight:600;color:var(--ink2)">Teacher observations and judgements are moderated to ensure consistency, using evidence from classroom activities, oral responses, reading behaviours, and recorded work.</p></div>
+        <div class="sblock"><h4>🚀 Ongoing progress monitoring</h4><p style="font-weight:600;color:var(--ink2)">Assessment identifies each child's strengths, areas for support, and next learning steps, combining reading data with teacher evidence to guide targeted instruction.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MONTHLY REVIEW ══════════ -->
+<section class="page" id="page-review">
+  <div class="eyebrow">Evidence Trail · AY 2026–27</div>
+  <h1 class="page-h">Teacher Review &amp; Next Steps</h1>
+  <p class="lede">A simple evidence trail for teachers: what we planned, what happened, what children learned, what evidence we collected, and what we will do next.</p>
+
+  <div class="section-h"><h2>🗓️ Year at a Glance</h2><span class="hint">April 2026 – March 2027</span></div>
+  <div class="card table-scroll" style="margin-bottom:26px">
+    <table>
+      <thead><tr><th>Month</th><th>Focus</th><th>Key Actions Completed</th><th>Impact / Findings</th><th>Evidence</th><th>Next Step</th></tr></thead>
+      <tbody id="reviewYearRows"></tbody>
+    </table>
+  </div>
+
+  <div class="section-h"><h2>📄 Monthly Detail</h2><span class="hint">Planned · Implemented · Impact · Evidence · Next Steps</span></div>
+  <div class="plan-controls">
+    <label for="reviewMonthSel">Month:</label>
+    <select id="reviewMonthSel" aria-label="Choose month"></select>
+  </div>
+  <div class="card plan-card" id="reviewDetailCard"></div>
+
+  <div class="admin-bar">
+    <button class="admin-btn admin-only" id="reviewEditToggle" type="button">✏️ Admin: Edit This Month</button>
+    <button class="admin-btn save admin-only" id="reviewSaveBtn" type="button" style="display:none">💾 Save &amp; Exit</button>
+    <button class="admin-btn exitnosave admin-only" id="reviewExitNoSaveBtn" type="button" style="display:none">🚪 Exit without Saving</button>
+    <button class="admin-btn reset admin-only" id="reviewResetBtn" type="button" style="display:none">↺ Reset to Default</button>
+    <span class="edit-hint" id="reviewEditHint" style="display:none">Click into any section above to edit it.</span>
+    <span class="edit-hint guest-only">🔒 Unlock Admin at the top of the page to edit this page</span>
+  </div>
+  <div class="note">🕐 July–August aren't tracked here (school holidays). Months without a filled-in record yet show a placeholder — use Edit Mode to fill them in as the term progresses, this becomes your evidence trail without needing to invent activities that weren't done.</div>
+</section>
+
+<!-- ══════════ RESOURCES ══════════ -->
+<section class="page" id="page-resources">
+  <div class="eyebrow">Library &amp; Links</div>
+  <h1 class="page-h">Our Reading Book Shelf</h1>
+  <p class="lede">Everything lives in OneDrive — this page links out, so families and teachers always see the latest version.</p>
+
+  <div class="section-h"><h2>📗 ORT Books by Level &amp; Genre</h2><span class="hint" id="ortCount">126 books</span></div>
+  <div class="card" style="margin-bottom:22px">
+    <div class="ort-filters">
+      <input type="text" id="ortSearch" placeholder="🔍 Search title..." aria-label="Search book title">
+      <select id="ortLevel" aria-label="Filter by level"><option value="">All Levels</option></select>
+      <select id="ortGenre" aria-label="Filter by genre"><option value="">All Genres</option></select>
+      <button type="button" id="ortReset" class="admin-btn reset">↺ Clear filters</button>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Title</th><th>Level</th><th>Genre</th><th>Series / Programme</th></tr></thead>
+        <tbody id="ortRows"></tbody>
+      </table>
+    </div>
+    <div class="note" id="ortEmpty" style="display:none">No books match those filters — try clearing them.</div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card act-card b-kg2">
+      <span class="tag t-kg2">Digital platform</span>
+      <h3>💻 Rosen LevelUp</h3>
+      <ul class="files" style="margin-top:10px">
+        <li><span class="fico">📘</span> LevelUp Parent User Guide <span class="src">PDF</span></li>
+        <li><span class="fico">✅</span> Implementation Checklist SY 2026-27 <span class="src">PDF</span></li>
+        <li><span class="fico">🔑</span> Student QR Login Badges <span class="src">PDF</span></li>
+        <li><span class="fico">✉️</span> Parent Letter SY 2026-27 <span class="src">PDF</span></li>
+        <li><span class="fico">🎓</span> Student Guide Presentation <span class="src">PDF</span></li>
+      </ul>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">Books &amp; readers</span>
+      <h3>📚 Reading Materials</h3>
+      <ul class="files" style="margin-top:10px">
+        <li><span class="fico">🌳</span> Oxford Reading Tree levelled books (Reading Room) <span class="src">Print</span></li>
+        <li><span class="fico">🐶</span> ORT June set: Pets · Animal Park · Barn Owls <span class="src">PDF</span></li>
+        <li><span class="fico">🔤</span> Lowercase alphabet flashcards <span class="src">PDF</span></li>
+        <li><span class="fico">📖</span> Picture books &amp; big books library <span class="src">Print</span></li>
+        <li><span class="fico">🎬</span> Pre-KG read-aloud videos for home <span class="src">Link</span></li>
+      </ul>
+    </div>
+    <div class="card act-card b-gold">
+      <span class="tag t-gold">Certificates &amp; rewards</span>
+      <h3>🌟 Reward Kit</h3>
+      <ul class="files" style="margin-top:10px">
+        <li><span class="fico">🏅</span> Star Reader Certificate template <span class="src">PPTX</span></li>
+        <li><span class="fico">🎉</span> KG Reward System deck <span class="src">PPTX</span></li>
+        <li><span class="fico">📜</span> LevelUp Certificate <span class="src">PDF</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-prek">OneDrive</span>
+      <h3 style="font-size:19px;margin:8px 0 10px">🗂️ Folder Structure</h3>
+      <div class="folder">
+        📁 <b>Reading Class</b><br>
+        &nbsp;&nbsp;├─ 📁 Reading Plans<br>
+        &nbsp;&nbsp;├─ 📁 Worksheets<br>
+        &nbsp;&nbsp;├─ 📁 Assessments<br>
+        &nbsp;&nbsp;├─ 📁 Reading Books<br>
+        &nbsp;&nbsp;├─ 📁 Parent Resources<br>
+        &nbsp;&nbsp;└─ 📁 Student Reports
+      </div>
+      <div class="note">Teacher pastes OneDrive share links here — the site never stores files, so updates in OneDrive appear automatically.</div>
+    </div>
+  </div>
+
+  <div class="section-h"><h2>🔴 Live Preview (OneDrive Embed)</h2><span class="hint">Auto-updates when the file changes in OneDrive</span></div>
+  <div class="card">
+    <p style="color:var(--muted);font-weight:600;margin-bottom:14px">This is a working embed slot. In OneDrive: right-click a file or folder → <b>Share → Embed</b> → copy the code it gives you → paste it in place of the placeholder box below (see the HTML comment at that spot).</p>
+    <div class="onedrive-embed">
+      <!-- ▼▼ REPLACE this placeholder div with your real OneDrive <iframe> embed code ▼▼
+      <iframe src="https://onedrive.live.com/embed?cid=XXXX&resid=XXXX&authkey=XXXX&em=2"
+              width="100%" height="320" frameborder="0" scrolling="no"></iframe>
+      -->
+      <div class="embed-placeholder">
+        <span class="ep-icon">📂</span>
+        <div><b>OneDrive live preview goes here</b><br>Paste your Share → Embed code to replace this box</div>
+      </div>
+    </div>
+    <div class="note">⚠️ If the embed shows blank on a school account, ask IT to enable <b>“Allow users to embed content from Microsoft 365”</b> in the SharePoint admin center — school tenants often have this off by default.</div>
+  </div>
+
+  <div class="section-h"><h2>🌐 External Best-Practice Resources</h2><span class="hint">Research-based references for teachers</span></div>
+  <div class="grid g3">
+    <div class="card sblock">
+      <h4>🔤 Reading Rockets</h4>
+      <p style="color:var(--muted);font-weight:600;font-size:13.5px">Free, research-backed articles and videos on <a href="https://www.readingrockets.org/topics/phonics-and-decoding/articles/phonics-instruction-basics" target="_blank" rel="noopener">systematic phonics instruction</a> and building phonemic awareness — the foundation skills behind our KG1 sound work.</p>
+    </div>
+    <div class="card sblock">
+      <h4>📖 National Center on Improving Literacy</h4>
+      <p style="color:var(--muted);font-weight:600;font-size:13.5px">A practice guide on <a href="https://improvingliteracy.org/resource/improving-reading-comprehension-in-kindergarten-through-3rd-grade/" target="_blank" rel="noopener">building K–3 reading comprehension</a> through guided discussion and text structure — directly supports our KG2 Guided Reading approach.</p>
+    </div>
+    <div class="card sblock">
+      <h4>🏛️ What Works Clearinghouse (IES)</h4>
+      <p style="color:var(--muted);font-weight:600;font-size:13.5px">The federal <a href="https://ies.ed.gov/ncee/wwc/practiceguide/21" target="_blank" rel="noopener">Foundational Skills practice guide</a> for K–3 — the evidence base behind decodable-text and explicit-decoding routines.</p>
+    </div>
+  </div>
+  <div class="note">💡 Consensus across these sources: phonemic awareness and systematic phonics come first, comprehension strategies are taught explicitly (not left to chance), and daily read-alouds with rich discussion build vocabulary alongside decoding — all already reflected in our Reading Plan and Strategies pages.</div>
+
+  <div class="section-h"><h2>🎥 Video Resources</h2><span class="hint">Click a thumbnail to play</span></div>
+  <div class="grid g3">
+    <div class="card sblock">
+      <h4>🗂️ Setting up a reading corner</h4>
+      <div class="yt-thumb" data-yt="Ai21HRBDdck" role="button" tabindex="0" aria-label="Play video: Classroom reading corner setup">
+        <img src="https://img.youtube.com/vi/Ai21HRBDdck/hqdefault.jpg" alt="Classroom reading corner setup video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Classroom Setup: Reading Corner &amp; Decor</span>
+      </div>
+    </div>
+    <div class="card sblock">
+      <h4>🔤 Phonics in action</h4>
+      <div class="yt-thumb" data-yt="4icYb-aTw9A" role="button" tabindex="0" aria-label="Play video: Jolly Phonics letter sounds">
+        <img src="https://img.youtube.com/vi/4icYb-aTw9A/hqdefault.jpg" alt="Jolly Phonics letter sounds video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Jolly Phonics: Letter Sounds s, a, t, i, p, n</span>
+      </div>
+    </div>
+    <div class="card sblock">
+      <h4>🦉 Guided Reading in practice</h4>
+      <div class="yt-thumb" data-yt="xUUAeOTXzi4" role="button" tabindex="0" aria-label="Play video: Guided Reading small groups">
+        <img src="https://img.youtube.com/vi/xUUAeOTXzi4/hqdefault.jpg" alt="Guided Reading small groups video thumbnail" loading="lazy">
+        <span class="play">▶</span>
+        <span class="cap">🎥 Guided Reading: Running Small Groups in the Classroom</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:#fff">Amity School Dubai</b> · Kindergarten Reading Class · Foundation Stage</div>
+    <div>Amity Reading Programme · KHDA Inspection File · AY 2026–27</div>
+  </div>
+</footer>
+<script>
+/* ── Data ── */
+/* ── YouTube click-to-play thumbnails ── */
+function ytThumb(id, title){
+  return `<div class="yt-thumb" data-yt="${id}" role="button" tabindex="0" aria-label="Play video: ${title}">
+    <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="${title} — video thumbnail" loading="lazy">
+    <span class="play">▶</span>
+    <span class="cap">🎥 ${title}</span>
+  </div>`;
+}
+function playYtThumb(el){
+  const id = el.dataset.yt;
+  el.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+}
+document.addEventListener('click', e=>{
+  const t = e.target.closest('.yt-thumb');
+  if(t) playYtThumb(t);
+});
+document.addEventListener('keydown', e=>{
+  if((e.key==='Enter'||e.key===' ') && e.target.classList && e.target.classList.contains('yt-thumb')){
+    e.preventDefault(); playYtThumb(e.target);
+  }
+});
+
+const ORT_BOOKS = [{"title": "The Elves & the Shoemaker", "level": "Level 1", "genre": "Fiction", "series": "Traditional Tales"}, {"title": "The Little Red Hen", "level": "Level 1", "genre": "Fiction", "series": "Traditional Tales"}, {"title": "The Mouse & the Elephant", "level": "Level 1", "genre": "Fiction", "series": "Traditional Tales"}, {"title": "The Ugly Duckling", "level": "Level 1", "genre": "Fiction", "series": "Traditional Tales"}, {"title": "A Big Mess", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "A Picnic at Sunset", "level": "Level 1+", "genre": "Fiction", "series": "Explore (Biff, Chip & Kipper)"}, {"title": "Big, Bad, Bug", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "Catkin the Kitten", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Cats", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "Get the Rat", "level": "Level 1+", "genre": "Fiction", "series": "Phonics (Fully decodable)"}, {"title": "Hats", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "Hit and Miss", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Hop, Hop, Hop!", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "In the Tent", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "In the Trolley", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Mud", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "Pop!", "level": "Level 1+", "genre": "Fiction", "series": "Phonics"}, {"title": "Stuck", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Bag in the Bin", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Big Red Bus", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Enormous Crab", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Lemon Pip", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Picnic on the Hill", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Picture Book Man", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Sock", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Tin Can Man", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Trampoline", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Too Hot", "level": "Level 1+", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Fun on the Canal", "level": "Level 1+", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Get a Bus", "level": "Level 1+", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Kick it", "level": "Level 1+", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Pets", "level": "Level 1+", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Rocket", "level": "Level 1+", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "A Big Bunch of Flowers", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "A Robin's Eggs", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "Bang the Gong", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "Catch it!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Catch it! (2)", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Comic Fun", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Dick & his Cat", "level": "Level 2", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Fire!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Gorilla on the Run!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Got a Job", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Hiccups", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Hush!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "I Will Get You", "level": "Level 2", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Jack", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "King & Queen", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Out!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Posh Shops", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "Pumpkin Mess", "level": "Level 2", "genre": "Fiction", "series": "Explore (Biff, Chip & Kipper)"}, {"title": "Quick Pedal!", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Quiz", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "Rabbit on the Run", "level": "Level 2", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Red Noses", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Ball Pit", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Big Picnic", "level": "Level 2", "genre": "Fiction", "series": "Explore (Biff, Chip & Kipper)"}, {"title": "The Falcon", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Gull's Picnic", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The King & the Lid", "level": "Level 2", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "The New Gingerbread Man", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Odd Eggs", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Wishing Well", "level": "Level 2", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "The Zip", "level": "Level 2", "genre": "Fiction", "series": "Phonics"}, {"title": "At the Animal Park", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Bug Quiz", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Eggs", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Exotic Plant Shop", "level": "Level 2", "genre": "Non-Fiction", "series": "Infact"}, {"title": "Fish and Ships", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Grow Me a Picnic", "level": "Level 2", "genre": "Non-Fiction", "series": "Explore (Biff, Chip & Kipper)"}, {"title": "Make Ring Box", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Now and Then", "level": "Level 2", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "A Bark in the Night", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "Big Hunt", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Chairs in the Air", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "Chicken Licken", "level": "Level 3", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Dragons", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Floppy and the Puppets", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Gran and the Go-Karts", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Green Sheets", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Helicopter Rescue", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "King of the Castle", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Lock Hot Pot", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "Mister Haggis", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Monkeys on the Car", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Queen's Mail", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "Right for Me", "level": "Level 3", "genre": "Fiction", "series": "Traditional Tales"}, {"title": "Road Burner", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Silver Foil Rocket", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "The Enormous Picture", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "Toads in the Road", "level": "Level 3", "genre": "Fiction", "series": "Phonics"}, {"title": "Walk in the Sun", "level": "Level 3", "genre": "Fiction", "series": "Biff, Chip & Kipper Stories"}, {"title": "A Cool Summer", "level": "Level 3", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Barn Owls", "level": "Level 3", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Fun in the Garden", "level": "Level 3", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Grow a Strawberry Mess", "level": "Level 3", "genre": "Non-Fiction", "series": "Explore (Biff, Chip & Kipper)"}, {"title": "Men on the Moon", "level": "Level 3", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Muffins", "level": "Level 3", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Hans in Luck", "level": "Level 4", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Three Rocks", "level": "Level 4", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Jack & the Beanstalk", "level": "Level 5", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Oh, Jack!", "level": "Level 5", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "The Magic Paint Box", "level": "Level 5", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "The Moon in the Pond", "level": "Level 5", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Faster Faster", "level": "Level 6", "genre": "Fiction", "series": "Explore"}, {"title": "Grub Up", "level": "Level 6", "genre": "Fiction", "series": "Explore"}, {"title": "How the Bear Lost His Tail", "level": "Level 6", "genre": "Fiction", "series": "Explore / Traditional Tales"}, {"title": "Minibeasts Matter!", "level": "Level 6", "genre": "Fiction", "series": "Explore"}, {"title": "Monkey's Magic Pipe", "level": "Level 6", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "Seeing in the Dark", "level": "Level 6", "genre": "Fiction", "series": "Explore"}, {"title": "The Frog Prince", "level": "Level 6", "genre": "Fiction", "series": "Explore / Traditional Tales"}, {"title": "The Steam Train", "level": "Level 6", "genre": "Fiction", "series": "Explore"}, {"title": "Yoshi the Stonecutter", "level": "Level 6", "genre": "Fiction", "series": "Traditional Tales (fully decodable)"}, {"title": "A Pony for a Day", "level": "Level 6", "genre": "Non-Fiction", "series": "Non-Fiction"}, {"title": "All About Robin Hood", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Deep Down Weird", "level": "Level 6", "genre": "Non-Fiction", "series": "Infact"}, {"title": "Giant Animals", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Grow a Pumpkin", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Olympic Dreams", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Perfect Pets", "level": "Level 6", "genre": "Non-Fiction", "series": "Infact"}, {"title": "Scrapbook", "level": "Level 6", "genre": "Non-Fiction", "series": "Infact - Non-Fiction"}, {"title": "Super Senses", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "The Ragged School", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Visit Paris", "level": "Level 6", "genre": "Non-Fiction", "series": "Phonics"}, {"title": "Who Eats Who?", "level": "Level 6", "genre": "Non-Fiction", "series": "Infact"}, {"title": "Zoom Out", "level": "Level 6", "genre": "Non-Fiction", "series": "Infact"}];
+
+/* ── Admin Login ── */
+const ADMIN_PASSCODE = '4757';
+let adminUnlocked = false;
+const adminPass = document.getElementById('adminPass');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+const adminMsg = document.getElementById('adminMsg');
+const adminLockedView = document.getElementById('adminLockedView');
+const adminUnlockedView = document.getElementById('adminUnlockedView');
+
+function anyEditDirty(){
+  return (typeof stratDirty !== 'undefined' && stratDirty) ||
+         (typeof reviewDirty !== 'undefined' && reviewDirty) ||
+         (typeof planDirty !== 'undefined' && planDirty);
+}
+function forceExitAllEdits(){
+  if(typeof editMode !== 'undefined' && editMode) stratExitEdit();
+  if(typeof reviewEditMode !== 'undefined' && reviewEditMode) reviewExitEdit();
+  if(typeof planEditMode !== 'undefined' && planEditMode) planExitEdit();
+  if(typeof renderStrategy === 'function') renderStrategy();
+  if(typeof renderReviewDetail === 'function') renderReviewDetail();
+  if(typeof renderPlan === 'function') renderPlan();
+}
+function doLogin(){
+  if(adminPass.value.trim() === ADMIN_PASSCODE){
+    adminUnlocked = true;
+    document.body.classList.add('admin-on');
+    adminLockedView.style.display = 'none';
+    adminUnlockedView.style.display = 'inline';
+    adminMsg.textContent = '';
+    adminPass.value = '';
+  } else {
+    adminMsg.textContent = '❌ Incorrect passcode';
+    adminPass.value = '';
+    adminPass.focus();
+  }
+}
+adminLoginBtn.addEventListener('click', doLogin);
+adminPass.addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+adminLogoutBtn.addEventListener('click', ()=>{
+  if(anyEditDirty() && !confirm('You have unsaved changes. Logging out will discard them. Continue?')) return;
+  forceExitAllEdits();
+  adminUnlocked = false;
+  document.body.classList.remove('admin-on');
+  adminLockedView.style.display = '';
+  adminUnlockedView.style.display = 'none';
+});
+window.addEventListener('beforeunload', e=>{
+  if(anyEditDirty()){ e.preventDefault(); e.returnValue = ''; }
+});
+
+const CLASSLISTS = {"PREKG A": ["Aadhanya Murugan", "Aadhik Jith", "Aahan Abhishek Singh", "Aaradhya Gokuldas", "Adam Mohamed Saber Abdelmohsen Emam", "Aethan Fernando", "Aysha Izwa Yasir", "Izim Rozain Mohammed Hashic", "Jizel Jeevan", "Kristallin Marie Kissan", "Mohammad Muslim", "Mohammad Saad Gulzar", "Muhammad Aariz", "Nishanth Geddam", "Reyansh Subash", "Ridhdhi Vivek", "Taleen Karim Mahmoud Mohamed Abdelbaky", "Vamika Vineet"], "PREKG B": ["Aarav Krishna", "Aariz Nawaz", "Abdurrahman Shaik", "Ansha Mulla", "Aryan Thananjayan", "Avantika Ghosh", "Benisha Sauntiyal", "Fathima Maryam Mundayil", "Heizel Zerah Arun", "Inaya Muhammed Yusuf", "Ishani Negi", "Khalidh Muhammadhu Shadhir", "Maira Siddiqi", "Mayukha Veluguri", "Muhammed Shahzain Tawseef", "Panth Nirav Patel", "Raaya Raj Mampilly", "Taha Abdoali Miyasaheb", "Zohan Danish Batliwala"], "KG1A": ["Aadhya Shree Ratnala", "Aaradh Kiran Sentharagai", "Aarvika Singh", "Ameya Dev", "Anvy Sandip Chauhan", "Ayma Shiyas", "Hrehana Lenin", "Iba Imtiaz Ahmed Shaikh", "Ilesha Sikhil Omkar", "Krisha Poojary", "Masooma Fatima Syeda", "Mivaan Patel", "Nathen Sebastian Vijay", "Neil Vatsa", "Onir Dhyani", "Sehrish Tattur", "Shabbir Hussain Katabjiwala", "Sirjan Singh Dhingra", "Sulaiman Moiz Ur Rehman", "Surabhi Suresh", "Zarra Ayzal Bint Zahid"], "KG1B": ["Aditya Sengupta", "Afzaan Imran Khot", "Avyaan Hariom Singh", "Dhruv Renjith", "J.A Joanna Rezia", "Jewel Joseph", "Jian Jino", "Kabir Monish Mathrani", "Maryam Ayrah Bint Arshad", "Norlen Prince Elvas", "Nyrah Arathi Mangattu", "Raina Vipin Varghese", "Rishan Soni", "Shiza Waniya Shamraz", "Shriya Ketan Agnihotri", "Vishisht Vishwanatha", "Vrishti Vinod Kumar", "Zuhaa Faheem Misgar"], "KG1C": ["Aadhya Anand", "Aamiya Mariam Nino", "Aarna Sinha", "Dhanvi Meenakshi", "Driti Nithin Shettigar", "Elan Anshaf", "Eshal Iqbal", "Eva Elnaz Shamnas", "Farhan Fahad", "Farzad Zane", "Giovanna Neshwan", "Hamdan Zeeshan Shaikh", "Keeon Fernandes", "Nakshatra Rajasekaran", "Nathania Grace Thomas", "Sofyan Mohamed Salah Ismail", "Tanishka Amei", "Vaani Dixit", "Vihaan Varsha Sherin", "Yuvaan Cariappa"], "KG1D": ["Aadvik Kochar", "Advait Jain", "Cia Omi Akhil", "Dhruv Sumesh Nair", "Dilshan Singh Harinder Singh", "Heya Thakor", "Ivaan Jareesh", "Jai Vardh Rajiv", "Leyana Rezai", "Malhaar S Sangeeth", "Maria George Payyappilly", "Nora Gia Mathias", "Pranav Anil Kumara", "Ruthwik Ishaan Rimmalapudi", "Saayansh Shetty", "Srinitha Narmeta", "Vamika Nevin", "Vasudev Krishna", "Yuvaan Singh", "Zayyan Sabeer Javid Ali"], "KG1E": ["Adeel Ahmed Ummathur Tharippottil", "Iqra Fatima", "Isha Kannanparambil Arun Kumar", "Ishaan Rakesh", "Lahiz Airik Mohammed Mohsin", "Mehariya Arivazhagan", "Mohamed Zanish Tharammal", "Nyra Akshay Sapaliga", "Pranay Sachin Dandwani", "Samyank Mehta", "Shanice Kharola", "Shivada Vishnu", "Shresht Suhan Shriyan", "Spencer Pinto", "Suhaira Kharola", "Tanishka Yadav", "Vandit Shreya Jeet Ganatra", "Zenil Krunalkumar Mehta", "Ziyad Asad Khursheed", "Zysha Usmani"], "KG2A": ["Aafra Mehzin", "Akshaini Negi", "Ayaan Bali", "Ayyub Rayyan Shabendri", "Ezralauren Jinesh", "Gurniwaz Kaur", "Jennifer Mariam Joe", "Jivansh Chandani", "Joash George", "Juvan Joban", "Keeona Ann Almeida", "Kiaan Negi", "Liam Ashin John", "Mysha Hasan", "Sreelakshmi Nishoy", "Svanik Sanotra", "Vaidehi Raj Vibhu Raj", "Vamika Midhun", "Viaan Chainani", "Vihaan Wanjari", "Viraaj Sreejith", "Vivaansh Kamath", "Ziyan Lajan"], "KG2B": ["Aadhav Akhil", "Aadhya Gaurav", "Aadvik Pradeep Iyer", "Aahil Jafer", "Aayansh Kumar Sharma", "Arpit Ghanshyam Dayma", "Arzaan Danish Batliwala", "Bhavesh Pratap Singh", "Dushyant Sai G", "Emin Aibak", "Esther Anie Cherian", "Giselle Britto", "Hrishitha Avinash", "Ithal Narayan", "Ivan Gadewar", "Kenza Mariyam Khalid", "Muhammad Hamdan Khan", "Muhammad Hashim Shaik", "Noya Elizabeth", "Sarah Durairaj", "Tahreen Bint Farhad", "Tazish Tauseef Sheikh", "Velan Saravanan", "Yusuf Shaikh"], "KG2C": ["Aathesh Daniel Rajapandyan", "Aayat Nabil", "Adrik Dev", "Alizeh Fatima Shahrukh Habib", "Bhaumi Prasanth", "Dhaveed Thomas Varghese", "Elaine Saly Navin", "Emmanuel Thomas", "Harnesh Pandiyan", "Imaduwa Gamage Hiranya Senudi Sooriyaarachchi", "Ishanvi Vivek", "Juhitha Geddam", "Liana Jesse Vivek", "Mannat Kaur", "Moaz Thakur", "Mohamed Haafil Mohamedharis", "Mohammad Azlan Mansuri", "Muhammad Shaweer Salman", "Naomika Guruprasad Shetty", "Nayza Mariam", "Reesha Pankaj Modi", "Samiksh Ranjan", "Shriyaan Shamjith", "Simra Nadir Khan", "Vihaan Chandoliya"], "KG2D": ["Aadhav Arul", "Aanaya Mahto", "Aisha Yasir", "Alizah Ansar", "Bhavya Balwani", "Dakshith Ram Reddy Surasani", "Glenn Adriel Sahaya Xavier Baskar", "Izaal Bibi", "Jehiel Lijo Joseph", "Kaveer Banga", "Lyra Sai Shivaranjanee", "Maysa Nabeel Fayaz", "Mohammed Zain Sanooj", "Mohammed Zayed Ashhar", "Moses George Rejosh", "Muhammad Ruhaan Gufran Ahmed Shaikh", "Muhammed Hasin Rafees", "Muhiuddin Farmanullah Shaik", "Navya Choubisa", "Nessa Maria Joby", "Nia Ajith", "Nyza Rahidh", "Rudhraa Boopathi", "Rudra Hattekar", "Ruhee Nandan Menon"], "KG2E": ["Aadhya Tejas Solanki", "Aadvika Srisai Balaji Venkatesan", "Aaron Finny", "Ahaan Tibin", "Ahmad Tariq Nazari", "Anayra Upendra Suryavanshi", "Arvi Reddy Vinay", "Ayra Zakir Husain Badbade", "Aysha Ayrin", "Christina Basil Joy", "Christopher Dias", "Deron Jinu", "Emaad Hamd Bin Mundhazir", "Hashika Manikandan", "Inaya Mohammed Lutfi", "Maryam Manzoor Mohammed Ali", "Miraal Ashraf Khan", "Mitansh Manesh Badjate", "Muhammed Salah", "Sameena Nisha Mohammad Ansari Raja", "Sathvik Vishakan Vimal", "Sayyid Ahammad Mihsham", "Shanaya Manikandan"], "KG2F": ["Advith Ravindra Acharya", "Aisha Rinsha", "Arvi Ganesh", "Ayaan Arun", "Drisha Singh", "Erfan Adili", "Evelyn Rose Bowcek", "Fathima Kiswah Ashfaq", "Gemma George", "Hamdan Ahmed Khan", "Heidi Haleem Maila Parambath", "Ibrahim Zakeri", "Iqra Aayat", "Johan Jeevan", "Liana Lenin", "Megan Vera Rodrigues", "Riddha Shree", "Ryan Prince", "Samaira Srivastava", "Sharvik Nikhil Kadam", "Sidra Anjum", "Vaiga Amal Anand", "Yaadhvi Sai Sri Ganesh", "Yashita Sharma"]};
+
+const CLASSES = [
+  {id:'PREKG A',label:'Pre-KG A',grade:'prek'},{id:'PREKG B',label:'Pre-KG B',grade:'prek'},
+  {id:'KG1A',label:'KG1 A',grade:'kg1'},{id:'KG1B',label:'KG1 B',grade:'kg1'},{id:'KG1C',label:'KG1 C',grade:'kg1'},{id:'KG1D',label:'KG1 D',grade:'kg1'},{id:'KG1E',label:'KG1 E',grade:'kg1'},
+  {id:'KG2A',label:'KG2 A',grade:'kg2'},{id:'KG2B',label:'KG2 B',grade:'kg2'},{id:'KG2C',label:'KG2 C',grade:'kg2'},{id:'KG2D',label:'KG2 D',grade:'kg2'},{id:'KG2E',label:'KG2 E',grade:'kg2'},{id:'KG2F',label:'KG2 F',grade:'kg2'}
+];
+
+const ASSESS = [
+  {c:'KG1 A',g:'kg1',n:21,avg:102,grower:'Masooma Fatima Syeda (+530L)',reader:'Onir Dhyani (BR225L)'},
+  {c:'KG1 B',g:'kg1',n:18,avg:63, grower:'Jewel Joseph (+320L)',reader:'Norlen Prince Elvas (BR215L)'},
+  {c:'KG1 C',g:'kg1',n:20,avg:163,grower:'Eshal Iqbal (+795L)',reader:'Eva Elnaz Shamnas (405L)'},
+  {c:'KG1 D',g:'kg1',n:20,avg:51, grower:'Maria George Payyappilly (+290L)',reader:'Saayansh Shetty (BR205L)'},
+  {c:'KG1 E',g:'kg1',n:20,avg:39, grower:'Ishaan Rakesh (+380L)',reader:'Ishaan Rakesh (BR645L)'},
+  {c:'KG2 A',g:'kg2',n:23,avg:38, grower:'Keeona Ann Almeida (+335L)',reader:'Vivaansh Kamath (590L)'},
+  {c:'KG2 B',g:'kg2',n:24,avg:32, grower:'Velan Saravanan (+185L)',reader:'Velan Saravanan (BR120L)'},
+  {c:'KG2 C',g:'kg2',n:25,avg:21, grower:'Harnesh Pandiyan (+300L)',reader:'Dhaveed Thomas Varghese (145L)'},
+  {c:'KG2 D',g:'kg2',n:25,avg:60, grower:'Dakshith Ram Reddy Surasani (+305L)',reader:'Muhammad Ruhaan G. A. Shaikh (85L)'},
+  {c:'KG2 E',g:'kg2',n:23,avg:49, grower:'Shanaya Manikandan (+235L)',reader:'Anayra Upendra Suryavanshi (85L)'},
+  {c:'KG2 F',g:'kg2',n:24,avg:30, grower:'Ryan Prince (+230L)',reader:'Johan Jeevan (BR175L)'}
+];
+
+/* Reading plans: per week, per grade (class-specific notes added at render) */
+/* Monthly Review data */
+const REVIEW_YEAR = [
+  {code:'apr',label:'April 2026',focus:'Reading Programme Launch',actions:'Reading Room sessions initiated for all 13 classes; Pre-KG Picture Walk + Read Aloud routine established; KG1/KG2 weekly Reading Room + daily 20-min in-class Rosen LevelUp begun.',impact:'Initial reading behaviours observed across grades; children settling into routine.',evidence:'Class lists (262 students), lesson records, Reading Room schedule.',next:'Continue baseline observations into May; begin KG1 phonics focus.'},
+  {code:'may',label:'May 2026',focus:'Early Reading Skills',actions:'KG1 phonics sounds introduced with oral blending; KG2 Guided Reading practiced with ORT texts; Pre-KG continued Picture Walk (At the Market, Wildlife Park).',impact:'Children showed varying reading abilities; early blenders identified in KG1; KG2 groups began separating by fluency.',evidence:'Reading Plan Week 1–2 lesson records, phonics tracker, ORT session notes.',next:'Identify support groups per class; prepare for LevelUp baseline review in June.'},
+  {code:'jun',label:'June 2026',focus:'Baseline & Data Review (Term 1)',actions:'Rosen LevelUp/Lexile baseline reviewed for KG1 (5 classes) &amp; KG2 (6 classes); Guided Reading groups run with ORT set; Blend &amp; Read delivered across Weeks 1–3; Star Readers recognised.',impact:'KG1 averaged +84L growth, KG2 +38L; 22 students recognised as Top Growers/Top Readers.',evidence:'Term 1 Assessment sheets (Pre-K/K1/K2), LevelUp growth data, class Lexile chart, Star Reader records.',next:'Plan differentiated reinforcement for Term 2; carry Guided Reading groups into September.'},
+  {code:'sep',label:'September 2026',focus:'Reading Progress',actions:'',impact:'',evidence:'',next:''},
+  {code:'oct',label:'October 2026',focus:'Phonics &amp; Fluency',actions:'',impact:'',evidence:'',next:''},
+  {code:'nov',label:'November 2026',focus:'Comprehension &amp; Vocabulary',actions:'',impact:'',evidence:'',next:''},
+  {code:'dec',label:'December 2026',focus:'Progress Review',actions:'',impact:'',evidence:'',next:''},
+  {code:'jan',label:'January 2027',focus:'',actions:'',impact:'',evidence:'',next:''},
+  {code:'feb',label:'February 2027',focus:'',actions:'',impact:'',evidence:'',next:''},
+  {code:'mar',label:'March 2027',focus:'End-of-Year Review',actions:'',impact:'',evidence:'',next:''}
+];
+const REVIEW_DETAIL = {
+  apr:{planned:['Launch Reading Room routine across Pre-KG, KG1 and KG2','Establish weekly reading schedule','Begin baseline observations'],
+    implemented:['Reading Room sessions initiated for all 13 classes','Pre-KG twice-weekly Picture Walk + Read Aloud routine established','KG1/KG2 weekly Reading Room + daily 20-min in-class Rosen LevelUp begun','Initial class rosters and reading groups set up'],
+    impact:['Initial reading behaviours observed across grades','Children settling into routine','Early differences in confidence and engagement noted'],
+    evidence:['Class lists — 262 students across 13 classes','Lesson records','Reading Room weekly schedule'],
+    next:['Continue baseline observations into May','Begin phonics-focused sessions for KG1']},
+  may:{planned:['Introduce/reinforce phonics sounds','Begin oral blending practice','Continue ORT-based Picture Walk and Guided Reading routines'],
+    implemented:['KG1 phonics sequence s, a, t, p, n introduced with oral blending','KG2 Guided Reading groups practiced with ORT texts','Pre-KG continued Picture Walk with vocabulary themes — At the Market, At the Wildlife Park'],
+    impact:['Children showed varying reading abilities','Early blenders identified in KG1','KG2 groups began separating by fluency level'],
+    evidence:['Reading Plan Week 1–2 lesson records','Phonics tracker','ORT session notes'],
+    next:['Identify support groups per class','Prepare for Rosen LevelUp baseline data review in June']},
+  jun:{planned:['Review Rosen LevelUp baseline and Lexile data','Validate with Mini Reading Tests where needed','Finalise term-end reading groups'],
+    implemented:['Rosen LevelUp/Lexile baseline reviewed for KG1 (5 classes) and KG2 (6 classes)','Guided Reading groups (Beginner/Intermediate/Advanced) run with ORT set — Pets, At the Animal Park, Barn Owls','Blend &amp; Read delivered across Weeks 1–3 — Mud/Hats/Pops, Story of Pip, The Cat','Star Readers recognised'],
+    impact:['KG1 averaged +84L Lexile growth across 5 classes','KG2 averaged +38L across 6 classes','Top growers included Eshal Iqbal (+795L, KG1 C) and Keeona Ann Almeida (+335L, KG2 A)','22 students recognised as Top Growers / Top Readers'],
+    evidence:['Term 1 Assessment sheets — Pre-K, K1, K2','Rosen LevelUp growth data','Class Lexile growth chart','Star Reader records'],
+    next:['Plan differentiated reinforcement for Term 2','Continue Guided Reading groups into September','Prepare resources for the new term']},
+  sep:null, oct:null, nov:null, dec:null, jan:null, feb:null, mar:null
+};
+
+const PLANS = {
+  w1:{
+    label:'June · Week 1',
+    prek:{title:'Picture Walk — ORT: At the Market',strategy:'Picture Walk + Read Aloud',
+      obj:['Observe pictures and talk about what they see','Build vocabulary related to market items','Develop listening and speaking skills'],
+      phonics:'Oral vocabulary & listening (no formal phonics yet)',vocab:['market','fruits','vegetables','basket','buy','sell','apple','banana','orange'],
+      activity:'Ignite: show a basket of toy fruits / a market picture — “What do you see? Where do we buy fruits?” Ideate: Picture Walk through ORT “At the Market” page by page, describing and naming. Innovate: match flashcards to the book, or pick toy fruits into a market bag. Big Question: “Where does our food come from?”',
+      homework:'Bring a fruit or vegetable from home to share; visit a market or supermarket and name items together.',
+      files:[['📋','PreKG Picture Walk — At the Market','DOCX'],['🎬','“A Thank You Walk” — read-aloud video (gratitude)','MP4']]},
+    kg1:{title:'Phonics — Sounds s, a, t, p, n (ORT Phonics Book 1)',strategy:'Phonics + Oral Blending',
+      obj:['Recognise and say the sounds s, a, t, p, n','Identify the beginning sound in simple words','Blend simple sounds orally (s–a–t = sat)'],
+      phonics:'s, a, t, p, n · oral blending (s–a–t → sat)',vocab:['sun','snake','apple','ant','tap','tiger','pan','pen','nap','net'],
+      activity:'Ignite: phonics action song — one action per sound (snake wiggle /s/, arms up /a/, tap knees /t/, pop lips /p/, nod /n/). Ideate: introduce each sound with flashcard + picture card + action; oral blending (s–a–t → “sat!”). Innovate: sound-recognition game and air-writing in the sand tray.',
+      homework:'Practise the 5 sounds at home with flashcards; find one object starting with s, a, t, p or n to show the class.',
+      files:[['📋','KG1 Phonics — s, a, t, p, n','DOCX'],['🎬','“The Value of Gratitude” — moral story video','MP4']]},
+    kg2:{title:'Blend & Read — ORT: Mud, Hats, Pops',strategy:'Blend & Read (ORT)',
+      obj:['Blend individual sounds to read CVC words','Read simple words and short sentences from ORT texts','Show early reading fluency and confidence'],
+      phonics:'CVC blending · sounds s, a, t, p, i, n, m, d · sight words: is, the',vocab:['cat','hat','mud','pop','pin','sat','dad','is','the'],
+      activity:'Ignite: revise sounds and oral-blend (/c/–/a/–/t/ → “cat!”). Ideate: finger-tap blending, model “Dad is in the mud,” brief picture walk of Mud / Hats / Pops. Innovate: guided reading then differentiated practice across L1–L5, from picture-matching to reading a full ORT page independently.',
+      homework:'Practise blending cat, hat, mud, pop at home; read the ORT book aloud with a grown-up.',
+      files:[['📋','KG2 Blend and Read — ORT (Mud/Hats/Pops)','DOCX'],['🖥️','“Bob Hid It” — Blend n Read slides','PPTX']]}
+  },
+  w2:{
+    label:'June · Week 2',
+    prek:{title:'Picture Walk — ORT Big Book: At the Wildlife Park',strategy:'Picture Walk + Read Aloud',
+      obj:['Observe and talk about the pictures','Make simple predictions using visual clues','Connect sounds and actions with animals','Develop early book-handling skills'],
+      phonics:'Animal sounds & oral vocabulary · SDG 15: Life on Land',vocab:['lion','elephant','monkey','bird','park','roar','stomp','chirp','jump'],
+      activity:'Ignite: action song, show the cover — “park or house? do you see animals?” Ideate: Picture Walk with sound & action (lion roar, elephant stomp, monkey oo-oo, bird chirp), ask-and-respond, then guided prediction “what comes next?” Innovate: independent book exploration — hold the spine, turn pages gently. Big Question: “What animals live in a wildlife park, and how do they move and speak?”',
+      homework:'Share one animal name with a family member; bring in or draw a favourite wildlife-park animal.',
+      files:[['📋','PreKG Picture Walk — Wildlife Park','DOCX'],['🎬','“The Perfect Pet” — read-aloud video','MP4'],['📄','Animal Rescue Centre — picture walk + questions','PDF']]},
+    kg1:{title:'Blend & Read — The Cat + Goldilocks retelling',strategy:'Blend & Read + Picture Walk stations',
+      obj:['Blend sounds to read “The Cat”','Retell Goldilocks and the 3 Bears in correct sequence','Recognise the satpin sounds fluently'],
+      phonics:'Jolly Phonics group 1 (s, a, t, p, i, n) · CVC blending — The Cat',vocab:['cat','sat','mat','pat','hat','big','small','just right'],
+      activity:'Picture Walk into Goldilocks and sequenced retelling (first / next / last). Blend & Read “The Cat” using the slides, warmed up with the Jolly Phonics satpin blending video. Reading stations rotation: blending table, flashcard corner, listening spot.',
+      homework:'LevelUp weekly book + retell Goldilocks in order at home; read “The Cat” aloud.',
+      files:[['🐱','K1 Blend and Read — The Cat (slides)','PPTX'],['📄','K1 Blend and Read — The Cat (print)','PDF'],['🐻','K1 — Goldilocks and the 3 Bears','DOCX'],['🎬','Jolly Phonics satpin blending video','MP4']]},
+    kg2:{title:'Guided Reading — ORT set + “If You Want a Pet”',strategy:'Guided Reading (Ignite–Ideate–Innovate) + Blend & Read + Read Aloud',
+      obj:['Name the author and illustrator and define each role','Use picture details to make predictions','Build new sight-word vocabulary','Blend and read CVC words in “If You Want a Pet”'],
+      phonics:'Blend & Read: If You Want a Pet · phonic sounds review',vocab:['Biff','Chip','Kipper','Floppy','author','illustrator','predict','pet','vet'],
+      activity:'Ignite (5 min): recap ORT characters — the Robinson family and Floppy — then Picture Walk. Ideate (25 min): guided reading by group — Beginner: Pets · Intermediate: Animal Park · Advanced: Barn Owls. Classroom reading: Blend & Read “If You Want a Pet” (5 min) and Read Aloud “What Animals Eat” (5 min). Innovate: comprehension talk — key characters, fiction or non-fiction?',
+      homework:'Re-read your group’s ORT book on LevelUp and tell a grown-up the main event.',
+      files:[['📋','KG2 Guided Reading Lesson Plan — June','DOCX'],['🐾','“If You Want a Pet” — Blend n Read (slides)','PPTX'],['📄','“If You Want a Pet” (print)','PDF'],['🎬','“What Animals Eat” — read-aloud video','MP4'],['🌳','ORT set: Pets · Animal Park · Barn Owls','PDF']]}
+  },
+  w3:{
+    label:'June · Week 3',
+    prek:{title:'Picture Walk Lesson: June Week 3',strategy:'Picture Walk + Read Aloud',
+      obj:['Participate in Shared Reading and discussion','Hold the book, turn pages, explore print','Connect letters to sounds visually'],
+      phonics:'Letter–sound recognition games',vocab:['book','open','look','listen','tell'],
+      activity:'Reading Room session following the PK Reading Lesson Plan: picture preview, prediction talk, expressive Read Aloud, and a draw-what-you-heard response.',
+      homework:'Shared reading video at home; name two characters together.',
+      files:[['📋','PK Reading Lesson Plan — June Week 2/3','DOCX']]},
+    kg1:{title:'Goldilocks and the 3 Bears + Story of Pip',strategy:'Picture Walk + Blend & Read stations',
+      obj:['Retell a classic tale in correct sequence','Blend sounds to read the Story of Pip','Recognise lowercase letters at speed'],
+      phonics:'Blend n Read: Story of Pip · lowercase letter fluency',vocab:['porridge','bears','big','small','just right','Pip'],
+      activity:'Picture Walk into Goldilocks, sequenced retelling, then rotation through reading stations (poster-guided): blending table, flashcard corner, listening spot.',
+      homework:'LevelUp weekly book + retell Goldilocks at home in order: first, next, last.',
+      files:[['🐻','K1 — Goldilocks and the 3 Bears','DOCX'],['🐶','Blend n Read — Story of Pip (slides)','PPTX'],['📄','Blend n Read — Story of Pip (print)','PDF'],['🔤','Lowercase alphabet flashcards','PDF'],['🖼️','Poster for reading stations','PNG']]},
+    kg2:{title:'ORT June Set: Pets · Animal Park · Barn Owls',strategy:'Guided Reading in Lexile groups',
+      obj:['Read group-level ORT text with growing fluency','Infer and retell with elaboration','Identify main event and setting','Distinguish fiction from non-fiction (Barn Owls!)'],
+      phonics:'High-frequency words · segmenting for writing',vocab:['pets','vet','park','owl','barn','hunt','night'],
+      activity:'Guided reading by group — Beginner: Pets (+1) · Intermediate: At the Animal Park (2) · Advanced: Barn Owls (3). Writing response: “The most important part was…” Share & reflect circle to close.',
+      homework:'Finish your group’s ORT book on LevelUp; bonus star for a one-sentence book review.',
+      files:[['🐶','ORT: Pets (+1)','PDF'],['🦁','ORT: At the Animal Park (2)','PDF'],['🦉','ORT: Barn Owls (3)','PDF'],['🗓️','KG2 Reading Cycle Planner','DOCX']]}
+  }
+};
+
+const GRADEMETA = {
+  prek:{tag:'t-prek', name:'Pre-KG', freq:'Reading Room twice weekly · 30 min', color:'var(--prek)'},
+  kg1:{tag:'t-kg1', name:'KG1', freq:'Reading Room weekly · 40 min + 20 min LevelUp', color:'var(--kg1)'},
+  kg2:{tag:'t-kg2', name:'KG2', freq:'Reading Room weekly · 40 min + 20 min LevelUp', color:'var(--kg2)'}
+};
+
+/* KG2 guided reading groups shown for kg2 classes */
+const KG2_GROUPS = 'Groups for this class are set from Term 1 Lexile levels — Beginner · Intermediate · Advanced. See the Lexile grouping sheet in Resources.';
+
+/* ── Navigation ── */
+const nav = document.getElementById('nav');
+nav.addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  nav.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
+  document.getElementById('page-'+b.dataset.page).classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ── Dashboard chart ── */
+const chart = document.getElementById('growthChart');
+const maxG = Math.max(...ASSESS.map(a=>a.avg));
+ASSESS.forEach(a=>{
+  const h = Math.round(a.avg/maxG*140)+14;
+  chart.insertAdjacentHTML('beforeend',
+    `<div class="bar"><span class="val">+${a.avg}L</span><div class="col" style="height:${h}px;background:var(--${a.g})"></div><span class="cls">${a.c.replace('KG','')}</span></div>`);
+});
+
+/* ── Strategies (Amity Reading Programme) ── */
+const STRATEGY = {
+  prek:{
+    name:'Pre-KG', freq:'Twice a week (Reading Room)',
+    focus:['Picture Walk','Read Aloud'],
+    skill:['Vocabulary building','Listening skills','Picture interpretation'],
+    phonics:{title:'Environmental phonics awareness',points:['Environmental sounds','Rhythm and rhyme','Sound discrimination']},
+    assessment:{ongoing:'Observation-based assessment',next:['“Name more objects in the picture independently”','“Sit and listen for a full story without prompting”']},
+    homeSchool:['Read-aloud videos shared with families'],
+    progression:['Introduce sequencing (first / next)','Encourage repeated phrases','Develop picture-to-word connections'],
+    outcomes:['Identifies and talks about pictures','Develops vocabulary and listening skills'],
+    eyfs:['Communication and Language: listening to stories (Read Aloud), speaking during Picture Walk','Literacy: understanding texts through pictures'],
+    childLed:'Reading corners with picture books; children begin to choose books independently.',
+    skillProg:'Naming → Talking',
+    video:{id:'5ISKUMy1980',title:'Read Aloud demo: “Too Much Glue” (Storyline Online)'}
+  },
+  kg1:{
+    name:'KG1', freq:'Once a week (Reading Room) + 20 min in-class (Rosen LevelUp)',
+    focus:['Picture Walk','Read Aloud','Blend and Read'],
+    skill:['Weekly whole-class book assignment','Linked to class themes (English, Math, EVS)'],
+    phonics:{title:'Letter-sound recognition & oral blending',points:['Letter-sound recognition','Oral blending (c-a-t → cat)','Introduction to simple CVC words']},
+    assessment:{ongoing:'Blending and reading checks',next:['“Apply blending without support”','“Use full sentences independently”']},
+    homeSchool:['Soft copies of reading materials shared with families','Weekly digital reading assignments (LevelUp)'],
+    progression:['Transition to sentence reading','Introduce simple comprehension','Begin guided reading in small groups'],
+    outcomes:['Blends and reads simple words','Understands basic sentences','Shows early comprehension'],
+    eyfs:['Communication and Language: answering questions and discussions','Literacy — Reading: blending and decoding words'],
+    childLed:'Reading corners extend to ORT books; independent book choice encouraged.',
+    skillProg:'Talking → Simple Reading',
+    video:{id:'4icYb-aTw9A',title:'Jolly Phonics: Letter Sounds s, a, t, i, p, n'}
+  },
+  kg2:{
+    name:'KG2', freq:'Once a week (Reading Room) + 20 min in-class (Rosen LevelUp)',
+    focus:['Picture Walk (Higher-order thinking)','Guided Reading','Comprehension discussions'],
+    skill:['Students grouped based on reading levels','Differentiated reading via Rosen LevelUp'],
+    phonics:{title:'Blending, segmenting & tricky words',points:['Blending and segmenting','Reading simple sentences','Recognising high-frequency (tricky) words']},
+    assessment:{ongoing:'Weekly guided reading',next:['“Explain answers using ‘because’”','“Retell a story with accurate sequence independently”']},
+    homeSchool:['Soft copies of reading materials shared with families','Weekly digital reading assignments (LevelUp)'],
+    progression:['Strengthen independent reading','Develop inference and reasoning','Introduce story structure and written responses'],
+    outcomes:['Reads with fluency and understanding','Uses reasoning in responses','Demonstrates comprehension and sequencing','Moves towards independent reading'],
+    eyfs:['Communication and Language: discussions and questioning','Literacy — Reading: guided and independent reading'],
+    childLed:'Reading corners with ORT and picture books; peer reading actively encouraged.',
+    skillProg:'Reading → Understanding & Explaining',
+    video:{id:'xUUAeOTXzi4',title:'Guided Reading: Running Small Groups in the Classroom'}
+  }
+};
+const ALL_STRATEGIES = ['Picture Walk (Pre-reading comprehension)','Read Aloud (modelled fluency and expression)','Guided Reading (teacher-supported reading)','Blending and decoding (phonics integration)','Vocabulary development','Sequencing and retelling','Use of questioning techniques (why, how, predict)'];
+
+const gradeTabs = document.getElementById('gradeTabs');
+let curGrade = 'prek';
+let editMode = false;
+let stratDirty = false;
+const STRATEGY_OVERRIDES = {};
+const stratCardEl = document.getElementById('stratCard');
+const editToggle = document.getElementById('editToggle');
+const saveBtn = document.getElementById('saveBtn');
+const exitNoSaveBtn = document.getElementById('exitNoSaveBtn');
+const resetBtn = document.getElementById('resetBtn');
+const editHint = document.getElementById('editHint');
+
+gradeTabs.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(editMode && stratDirty && !confirm('You have unsaved changes on this page. Switching grade will discard them. Continue?')) return;
+  if(editMode) stratExitEdit();
+  curGrade=b.dataset.g;
+  gradeTabs.querySelectorAll('button').forEach(x=>{x.classList.remove('sel');x.setAttribute('aria-selected','false')});
+  b.classList.add('sel'); b.setAttribute('aria-selected','true');
+  renderStrategy();
+});
+stratCardEl.addEventListener('input', ()=>{ if(editMode) stratDirty = true; });
+
+function stratEnterEdit(){
+  editMode = true; stratDirty = false;
+  stratCardEl.contentEditable = 'true';
+  stratCardEl.classList.add('editing');
+  editToggle.style.display = 'none';
+  saveBtn.style.display = 'inline-flex';
+  exitNoSaveBtn.style.display = 'inline-flex';
+  resetBtn.style.display = STRATEGY_OVERRIDES[curGrade] ? 'inline-flex' : 'none';
+  editHint.style.display = 'inline';
+  editHint.classList.remove('saved');
+  editHint.textContent = 'Click into any text above to edit it.';
+}
+function stratExitEdit(){
+  editMode = false; stratDirty = false;
+  stratCardEl.contentEditable = 'false';
+  stratCardEl.classList.remove('editing');
+  editToggle.style.display = '';
+  saveBtn.style.display = 'none';
+  exitNoSaveBtn.style.display = 'none';
+  resetBtn.style.display = 'none';
+  editHint.style.display = 'none';
+}
+editToggle.addEventListener('click', stratEnterEdit);
+saveBtn.addEventListener('click',()=>{
+  STRATEGY_OVERRIDES[curGrade] = stratCardEl.innerHTML;
+  stratExitEdit();
+  renderStrategy();
+});
+exitNoSaveBtn.addEventListener('click',()=>{
+  if(stratDirty && !confirm('You have unsaved changes. Exit without saving?')) return;
+  stratExitEdit();
+  renderStrategy();
+});
+resetBtn.addEventListener('click',()=>{
+  delete STRATEGY_OVERRIDES[curGrade];
+  renderStrategy();
+  stratDirty = false;
+  resetBtn.style.display = 'none';
+});
+
+function renderStrategy(){
+  resetBtn.style.display = (editMode && STRATEGY_OVERRIDES[curGrade]) ? 'inline-flex' : 'none';
+  if(STRATEGY_OVERRIDES[curGrade]){
+    stratCardEl.innerHTML = STRATEGY_OVERRIDES[curGrade];
+    stratCardEl.contentEditable = editMode ? 'true' : 'false';
+    stratCardEl.classList.toggle('editing', editMode);
+    return;
+  }
+  const s = STRATEGY[curGrade];
+  const meta = GRADEMETA[curGrade];
+  stratCardEl.innerHTML = `
+    <div class="strat-head" style="border-top-color:${meta.color}">
+      <span class="tag ${meta.tag}">${s.name}</span>
+      <h3>${s.name} Reading Structure</h3>
+      <p>${s.freq}</p>
+      ${ytThumb(s.video.id, s.video.title)}
+    </div>
+    <div class="pgrid">
+      <div>
+        <div class="sblock"><h4>🎯 Focus strategies</h4><div class="chips">${s.focus.map(f=>`<span class="chip">${f}</span>`).join('')}</div></div>
+        <div class="sblock"><h4>🧩 Skill development / digital integration</h4><ul>${s.skill.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+        <div class="sblock"><h4>🔡 Phonics integration — ${s.phonics.title}</h4><ul>${s.phonics.points.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+        <div class="sblock"><h4>🌈 EYFS curriculum alignment</h4><ul>${s.eyfs.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      </div>
+      <div>
+        <div class="sblock"><h4>📝 Ongoing assessment — ${s.assessment.ongoing}</h4><h4 style="font-size:13px;color:var(--muted);margin:10px 0 6px">Example AFL “next steps”</h4><ul>${s.assessment.next.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+        <div class="sblock"><h4>🏠 Home-school connection</h4><ul>${s.homeSchool.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+        <div class="sblock"><h4>🧒 Child-led learning</h4><p style="font-weight:600">${s.childLed}</p></div>
+        <div class="sblock"><h4>🚀 Progression plan (September onwards)</h4><ul>${s.progression.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      </div>
+    </div>
+    <div class="sblock" style="margin-top:6px"><h4>✅ Expected outcomes</h4><div class="chips">${s.outcomes.map(o=>`<span class="chip">${o}</span>`).join('')}</div></div>
+    <div class="sblock" style="margin-top:16px"><h4>📶 Skill progression framework</h4>
+      <div class="progress-strip">
+        <span class="pstep" style="opacity:${curGrade==='prek'?1:.45}">Pre-KG: Naming → Talking</span><span class="parrow">→</span>
+        <span class="pstep" style="opacity:${curGrade==='kg1'?1:.45}">KG1: Talking → Simple Reading</span><span class="parrow">→</span>
+        <span class="pstep" style="opacity:${curGrade==='kg2'?1:.45}">KG2: Reading → Understanding &amp; Explaining</span>
+      </div>
+    </div>`;
+  stratCardEl.contentEditable = editMode ? 'true' : 'false';
+  stratCardEl.classList.toggle('editing', editMode);
+}
+renderStrategy();
+
+/* ── Monthly Review ── */
+const reviewYearRowsEl = document.getElementById('reviewYearRows');
+reviewYearRowsEl.innerHTML = REVIEW_YEAR.map(m=>{
+  const dash = v => v && v.trim() ? v : '<span style="color:var(--muted)">—</span>';
+  return `<tr><td><b>${m.label}</b></td><td>${dash(m.focus)}</td><td>${dash(m.actions)}</td><td>${dash(m.impact)}</td><td>${dash(m.evidence)}</td><td>${dash(m.next)}</td></tr>`;
+}).join('');
+
+const reviewMonthSel = document.getElementById('reviewMonthSel');
+REVIEW_YEAR.forEach(m=>reviewMonthSel.insertAdjacentHTML('beforeend',`<option value="${m.code}">${m.label}</option>`));
+reviewMonthSel.value = 'jun';
+
+let reviewEditMode = false;
+let reviewDirty = false;
+const REVIEW_OVERRIDES = {};
+const reviewDetailCard = document.getElementById('reviewDetailCard');
+const reviewEditToggle = document.getElementById('reviewEditToggle');
+const reviewSaveBtn = document.getElementById('reviewSaveBtn');
+const reviewExitNoSaveBtn = document.getElementById('reviewExitNoSaveBtn');
+const reviewResetBtn = document.getElementById('reviewResetBtn');
+const reviewEditHint = document.getElementById('reviewEditHint');
+
+reviewMonthSel.addEventListener('change', e=>{
+  if(reviewEditMode && reviewDirty){
+    if(!confirm('You have unsaved changes on this page. Switching month will discard them. Continue?')){
+      e.target.value = e.target.dataset.prev || reviewMonthSel.value;
+      return;
+    }
+  }
+  if(reviewEditMode) reviewExitEdit();
+  renderReviewDetail();
+});
+reviewMonthSel.addEventListener('focus', e=>{ e.target.dataset.prev = e.target.value; });
+reviewDetailCard.addEventListener('input', ()=>{ if(reviewEditMode) reviewDirty = true; });
+
+function reviewEnterEdit(){
+  reviewEditMode = true; reviewDirty = false;
+  reviewDetailCard.contentEditable = 'true';
+  reviewDetailCard.classList.add('editing');
+  reviewEditToggle.style.display = 'none';
+  reviewSaveBtn.style.display = 'inline-flex';
+  reviewExitNoSaveBtn.style.display = 'inline-flex';
+  reviewResetBtn.style.display = REVIEW_OVERRIDES[reviewMonthSel.value] ? 'inline-flex' : 'none';
+  reviewEditHint.style.display = 'inline';
+  reviewEditHint.classList.remove('saved');
+  reviewEditHint.textContent = 'Click into any section above to edit it.';
+}
+function reviewExitEdit(){
+  reviewEditMode = false; reviewDirty = false;
+  reviewDetailCard.contentEditable = 'false';
+  reviewDetailCard.classList.remove('editing');
+  reviewEditToggle.style.display = '';
+  reviewSaveBtn.style.display = 'none';
+  reviewExitNoSaveBtn.style.display = 'none';
+  reviewResetBtn.style.display = 'none';
+  reviewEditHint.style.display = 'none';
+}
+reviewEditToggle.addEventListener('click', reviewEnterEdit);
+reviewSaveBtn.addEventListener('click',()=>{
+  REVIEW_OVERRIDES[reviewMonthSel.value] = reviewDetailCard.innerHTML;
+  reviewExitEdit();
+  renderReviewDetail();
+});
+reviewExitNoSaveBtn.addEventListener('click',()=>{
+  if(reviewDirty && !confirm('You have unsaved changes. Exit without saving?')) return;
+  reviewExitEdit();
+  renderReviewDetail();
+});
+reviewResetBtn.addEventListener('click',()=>{
+  delete REVIEW_OVERRIDES[reviewMonthSel.value];
+  renderReviewDetail();
+  reviewDirty = false;
+  reviewResetBtn.style.display = 'none';
+});
+
+function renderReviewDetail(){
+  const code = reviewMonthSel.value;
+  reviewResetBtn.style.display = (reviewEditMode && REVIEW_OVERRIDES[code]) ? 'inline-flex' : 'none';
+  if(REVIEW_OVERRIDES[code]){
+    reviewDetailCard.innerHTML = REVIEW_OVERRIDES[code];
+    reviewDetailCard.contentEditable = reviewEditMode ? 'true' : 'false';
+    reviewDetailCard.classList.toggle('editing', reviewEditMode);
+    return;
+  }
+  const m = REVIEW_YEAR.find(x=>x.code===code);
+  const d = REVIEW_DETAIL[code];
+  const sec = (icon,title,items) => `<div class="sblock"><h4>${icon} ${title}</h4>${
+    items && items.length ? `<ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul>` : `<p style="color:var(--muted);font-weight:600">Not yet started — click Admin: Edit This Month to add it.</p>`
+  }</div>`;
+  reviewDetailCard.innerHTML = `
+    <div class="plan-head">
+      <div>
+        <span class="tag t-gold">${m.label}</span>
+        <h3>${m.focus || 'Focus to be set'}</h3>
+      </div>
+    </div>
+    <div class="pgrid">
+      <div>
+        ${sec('🎯','Planned', d && d.planned)}
+        ${sec('✅','Implemented', d && d.implemented)}
+      </div>
+      <div>
+        ${sec('📊','Impact / Findings', d && d.impact)}
+        ${sec('📎','Evidence Collected', d && d.evidence)}
+      </div>
+    </div>
+    ${sec('🚀','Next Steps', d && d.next)}`;
+  reviewDetailCard.contentEditable = reviewEditMode ? 'true' : 'false';
+  reviewDetailCard.classList.toggle('editing', reviewEditMode);
+}
+renderReviewDetail();
+
+/* ── Reading plan ── */
+const tabs = document.getElementById('classTabs');
+const GRADE_GROUPS = ['prek','kg1','kg2'].map(g=>{
+  const secs = CLASSES.filter(c=>c.grade===g);
+  const total = secs.reduce((sum,c)=>sum+((CLASSLISTS[c.id]||[]).length),0);
+  return {grade:g, label:GRADEMETA[g].name, sections:secs, total};
+});
+let curClassGroup = 'kg2', curWeek = 'w3';
+let planEditMode = false;
+let planDirty = false;
+const PLAN_OVERRIDES = {};
+const planCardEl = document.getElementById('planCard');
+const planEditToggle = document.getElementById('planEditToggle');
+const planSaveBtn = document.getElementById('planSaveBtn');
+const planExitNoSaveBtn = document.getElementById('planExitNoSaveBtn');
+const planResetBtn = document.getElementById('planResetBtn');
+const planEditHint = document.getElementById('planEditHint');
+const planKey = () => `${curWeek}_${curClassGroup}`;
+
+GRADE_GROUPS.forEach(g=>{
+  tabs.insertAdjacentHTML('beforeend',
+    `<button role="tab" data-grade="${g.grade}" class="on-${g.grade}${g.grade===curClassGroup?' sel':''}" aria-selected="${g.grade===curClassGroup}">${g.label}</button>`);
+});
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(planEditMode && planDirty && !confirm('You have unsaved changes on this page. Switching class will discard them. Continue?')) return;
+  if(planEditMode) planExitEdit();
+  curClassGroup=b.dataset.grade;
+  tabs.querySelectorAll('button').forEach(x=>{x.classList.remove('sel');x.setAttribute('aria-selected','false')});
+  b.classList.add('sel'); b.setAttribute('aria-selected','true');
+  renderPlan();
+});
+document.getElementById('weekSel').addEventListener('change',e=>{
+  if(planEditMode && planDirty && !confirm('You have unsaved changes on this page. Switching week will discard them. Continue?')){
+    e.target.value = curWeek;
+    return;
+  }
+  if(planEditMode) planExitEdit();
+  curWeek=e.target.value;
+  renderPlan();
+});
+planCardEl.addEventListener('input', ()=>{ if(planEditMode) planDirty = true; });
+
+function planEnterEdit(){
+  planEditMode = true; planDirty = false;
+  planCardEl.contentEditable = 'true';
+  planCardEl.classList.add('editing');
+  planEditToggle.style.display = 'none';
+  planSaveBtn.style.display = 'inline-flex';
+  planExitNoSaveBtn.style.display = 'inline-flex';
+  planResetBtn.style.display = PLAN_OVERRIDES[planKey()] ? 'inline-flex' : 'none';
+  planEditHint.style.display = 'inline';
+  planEditHint.classList.remove('saved');
+  planEditHint.textContent = 'Click into any text above to edit it.';
+}
+function planExitEdit(){
+  planEditMode = false; planDirty = false;
+  planCardEl.contentEditable = 'false';
+  planCardEl.classList.remove('editing');
+  planEditToggle.style.display = '';
+  planSaveBtn.style.display = 'none';
+  planExitNoSaveBtn.style.display = 'none';
+  planResetBtn.style.display = 'none';
+  planEditHint.style.display = 'none';
+}
+planEditToggle.addEventListener('click', planEnterEdit);
+planSaveBtn.addEventListener('click',()=>{
+  PLAN_OVERRIDES[planKey()] = planCardEl.innerHTML;
+  planExitEdit();
+  renderPlan();
+});
+planExitNoSaveBtn.addEventListener('click',()=>{
+  if(planDirty && !confirm('You have unsaved changes. Exit without saving?')) return;
+  planExitEdit();
+  renderPlan();
+});
+planResetBtn.addEventListener('click',()=>{
+  delete PLAN_OVERRIDES[planKey()];
+  renderPlan();
+  planDirty = false;
+  planResetBtn.style.display = 'none';
+});
+
+function renderPlan(){
+  planResetBtn.style.display = (planEditMode && PLAN_OVERRIDES[planKey()]) ? 'inline-flex' : 'none';
+  if(PLAN_OVERRIDES[planKey()]){
+    planCardEl.innerHTML = PLAN_OVERRIDES[planKey()];
+    planCardEl.contentEditable = planEditMode ? 'true' : 'false';
+    planCardEl.classList.toggle('editing', planEditMode);
+    return;
+  }
+  const grp = GRADE_GROUPS.find(g=>g.grade===curClassGroup);
+  const meta = GRADEMETA[curClassGroup];
+  const p = PLANS[curWeek][curClassGroup];
+  const w = PLANS[curWeek].label;
+  const sectionList = grp.sections.map(s=>s.label.split(' ').pop()).join(', ');
+  const groupsNote = curClassGroup==='kg2' ? `<div class="note">👥 ${KG2_GROUPS}</div>` : '';
+  planCardEl.innerHTML = `
+    <div class="plan-head">
+      <div>
+        <span class="tag ${meta.tag}">${grp.label} · ${grp.total} readers · sections ${sectionList}</span>
+        <h3>${p.title}</h3>
+        <div class="cycle-line"><span>Picture Walk</span><span class="arrow">→</span><span>Guided Reading</span><span class="arrow">→</span><span>Phonics</span><span class="arrow">→</span><span>Writing</span></div>
+      </div>
+      <div class="plan-meta" style="text-align:right">
+        <div><b>${w}</b></div>
+        <div>${meta.freq}</div>
+        <div>Strategy: <b style="color:${meta.color}">${p.strategy}</b></div>
+      </div>
+    </div>
+    <div class="pgrid">
+      <div>
+        <div class="pblock"><h4><span class="em">🎯</span> Learning objectives</h4><ul>${p.obj.map(o=>`<li>${o}</li>`).join('')}</ul></div>
+        <div class="pblock" style="margin-top:16px"><h4><span class="em">🔡</span> Phonics focus</h4><p>${p.phonics}</p></div>
+        <div class="pblock" style="margin-top:16px"><h4><span class="em">💬</span> Vocabulary</h4><div class="chips">${p.vocab.map(v=>`<span class="chip">${v}</span>`).join('')}</div></div>
+      </div>
+      <div>
+        <div class="pblock"><h4><span class="em">📚</span> Reading activity</h4><p>${p.activity}</p></div>
+        <div class="pblock" style="margin-top:16px"><h4><span class="em">🏠</span> Homework</h4><p>${p.homework}</p></div>
+        <div class="pblock" style="margin-top:16px"><h4><span class="em">📎</span> Materials &amp; worksheets</h4>
+          <ul class="files">${p.files.map(f=>`<li><span class="fico">${f[0]}</span> ${f[1]} <span class="src">${f[2]}</span></li>`).join('')}</ul>
+        </div>
+      </div>
+    </div>
+    ${groupsNote}`;
+  planCardEl.contentEditable = planEditMode ? 'true' : 'false';
+  planCardEl.classList.toggle('editing', planEditMode);
+}
+renderPlan();
+
+/* ── Class list ── */
+const clWrap = document.getElementById('classListWrap');
+[['prek','Pre-KG','Picture Walk & Read Aloud · twice weekly'],['kg1','KG1','Blend & Read + weekly LevelUp book'],['kg2','KG2','Guided Reading in Lexile groups']].forEach(([g,name,sub])=>{
+  clWrap.insertAdjacentHTML('beforeend',`<div class="section-h"><h2><span class="tag t-${g}" style="vertical-align:3px;margin-right:8px">${name}</span>${sub}</h2></div><div class="grid g2" id="cl-${g}"></div>`);
+});
+CLASSES.forEach(c=>{
+  const list = CLASSLISTS[c.id]||[];
+  document.getElementById('cl-'+c.grade).insertAdjacentHTML('beforeend',`
+    <details class="card class-card">
+      <summary><div class="bar-strip" style="background:var(--${c.grade})"></div>
+        <div class="grow"><div class="name">${c.label}</div><div class="count">${list.length} students · tap to view</div></div>
+        <span class="caret">›</span>
+      </summary>
+      <div class="students">${list.map(n=>`<div>${n}</div>`).join('')}</div>
+    </details>`);
+});
+
+/* ── Assessment table ── */
+document.getElementById('assessRows').innerHTML = ASSESS.map(a=>`
+  <tr><td><span class="tag t-${a.g}">${a.c}</span></td><td>${a.n}</td>
+  <td class="growth-pos">+${a.avg}L</td><td>🥇 ${a.grower}</td><td>🔵 ${a.reader}</td></tr>`).join('');
+
+/* ── ORT Books by Level & Genre ── */
+const ortSearch = document.getElementById('ortSearch');
+const ortLevelSel = document.getElementById('ortLevel');
+const ortGenreSel = document.getElementById('ortGenre');
+const ortResetBtn = document.getElementById('ortReset');
+const ortRowsEl = document.getElementById('ortRows');
+const ortCountEl = document.getElementById('ortCount');
+const ortEmptyEl = document.getElementById('ortEmpty');
+
+const LEVEL_ORDER = ['Level 1','Level 1+','Level 2','Level 3','Level 4','Level 5','Level 6'];
+const ortLevels = LEVEL_ORDER.filter(l=>ORT_BOOKS.some(b=>b.level===l));
+const ortGenres = [...new Set(ORT_BOOKS.map(b=>b.genre))].sort();
+ortLevels.forEach(l=>ortLevelSel.insertAdjacentHTML('beforeend',`<option value="${l}">${l}</option>`));
+ortGenres.forEach(g=>ortGenreSel.insertAdjacentHTML('beforeend',`<option value="${g}">${g}</option>`));
+
+function renderOrtBooks(){
+  const q = ortSearch.value.trim().toLowerCase();
+  const lvl = ortLevelSel.value;
+  const gen = ortGenreSel.value;
+  const rows = ORT_BOOKS.filter(b=>
+    (!q || b.title.toLowerCase().includes(q)) &&
+    (!lvl || b.level===lvl) &&
+    (!gen || b.genre===gen)
+  );
+  ortCountEl.textContent = `${rows.length} of ${ORT_BOOKS.length} books`;
+  ortEmptyEl.style.display = rows.length ? 'none' : 'block';
+  ortRowsEl.innerHTML = rows.map(b=>{
+    const cls = b.genre==='Fiction' ? 'fiction' : 'nonfiction';
+    return `<tr><td>${b.title}</td><td>${b.level}</td><td><span class="ort-tag ${cls}">${b.genre}</span></td><td>${b.series}</td></tr>`;
+  }).join('');
+}
+ortSearch.addEventListener('input', renderOrtBooks);
+ortLevelSel.addEventListener('change', renderOrtBooks);
+ortGenreSel.addEventListener('change', renderOrtBooks);
+ortResetBtn.addEventListener('click', ()=>{
+  ortSearch.value=''; ortLevelSel.value=''; ortGenreSel.value='';
+  renderOrtBooks();
+});
+renderOrtBooks();
+</script>
+</body>
+</html>
