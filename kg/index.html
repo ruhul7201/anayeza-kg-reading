@@ -259,8 +259,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .share-msg{font-size:13px;font-weight:800;color:var(--prek)}
 @media(max-width:560px){.share-btn{font-size:13px;padding:8px 14px}}
 .photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.photo-gallery.cols-3{grid-template-columns:1fr 1fr 1fr}
 .photo-gallery figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
 .photo-gallery img{width:100%;height:320px;object-fit:cover;display:block}
+.photo-gallery.cols-3 img{height:240px}
 .photo-gallery figcaption{padding:10px 14px;font-family:'Baloo 2';font-weight:700;font-size:14px;color:var(--ink2);background:var(--card)}
 @media(max-width:760px){.photo-gallery{grid-template-columns:1fr}.photo-gallery img{height:220px}}
 #stratCard.editing{outline:3px dashed var(--gold);outline-offset:6px;background:#FFFDF6;cursor:text}
@@ -588,16 +590,17 @@ main{padding-top:30px}
     <div class="note">✅ All switched on across our Reading Room — each tool supports one of the four reading-block stages above rather than replacing teacher instruction.</div>
   </div>
 
-  <div class="section-h"><h2>🗂️ Classroom Set-Up Essentials</h2></div>
-  <div class="grid g2">
-    <div class="card sblock">
-      <h4>📚 The reading corner</h4>
-      <ul><li>Book bins organised by level or genre</li><li>A cozy, inviting reading spot</li><li>Clear routines children can follow independently</li><li>Anchor charts for support during centers</li></ul>
-    </div>
-    <div class="card sblock">
-      <h4>👍 Tips for success</h4>
-      <ul><li>Keep routines consistent, day to day</li><li>Let assessment data guide grouping</li><li>Build a relationship with every reader</li><li>Celebrate growth, not just level</li><li>Keep the plan simple and sustainable</li></ul>
-    </div>
+  <div class="section-h"><h2>📷 Reading Time in Action</h2></div>
+  <div class="photo-gallery cols-3">
+    <figure>
+      <img src="/kg/img/reading-time-1.jpg" alt="Reading Time — session 1" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-2.jpg" alt="Reading Time — session 2" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-3.jpg" alt="Reading Time — session 3" loading="lazy">
+    </figure>
   </div>
 
   <div class="remember">
@@ -639,7 +642,7 @@ main{padding-top:30px}
       <span class="tag t-kg2">KG2 · Small groups</span>
       <h3>🦉 Guided Reading</h3>
       <p>Teacher-supported reading in levelled groups using Oxford Reading Tree books. Students meet Biff, Chip, Kipper and Floppy while building fluency and comprehension.</p>
-      <ul><li>Beginner → <i>Pets</i> · Intermediate → <i>At the Animal Park</i> · Advanced → <i>Barn Owls</i></li><li>Comprehension talk: characters, setting, fiction vs non-fiction</li><li>Groups are formed from Lexile levels and refreshed each term</li></ul>
+      <ul><li>Comprehension talk: characters, setting, fiction vs non-fiction</li><li>Groups are formed from Lexile levels and refreshed each term</li></ul>
       <div class="yt-thumb" data-yt="xUUAeOTXzi4" role="button" tabindex="0" aria-label="Play video: Guided Reading small groups">
         <img src="https://img.youtube.com/vi/xUUAeOTXzi4/hqdefault.jpg" alt="Guided Reading small groups video thumbnail" loading="lazy">
         <span class="play">▶</span>
