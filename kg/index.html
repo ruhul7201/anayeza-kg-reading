@@ -258,6 +258,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .share-btn:hover{background:var(--gold);border-color:var(--gold)}
 .share-msg{font-size:13px;font-weight:800;color:var(--prek)}
 @media(max-width:560px){.share-btn{font-size:13px;padding:8px 14px}}
+.photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.photo-gallery figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.photo-gallery img{width:100%;height:320px;object-fit:cover;display:block}
+.photo-gallery figcaption{padding:10px 14px;font-family:'Baloo 2';font-weight:700;font-size:14px;color:var(--ink2);background:var(--card)}
+@media(max-width:760px){.photo-gallery{grid-template-columns:1fr}.photo-gallery img{height:220px}}
 #stratCard.editing{outline:3px dashed var(--gold);outline-offset:6px;background:#FFFDF6;cursor:text}
 #stratCard.editing:focus{outline-color:var(--kg2)}
 .yt-thumb{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:16/9;background:#000;margin-top:10px}
@@ -355,12 +360,12 @@ main{padding-top:30px}
     <button class="share-btn" id="shareDownloadBtn" type="button">🔗 Share this Page — Download as HTML</button>
     <span class="share-msg" id="shareMsg" role="status"></span>
   </div>
+  <div class="note" style="margin-bottom:16px">Reading Room contact: Ms. Anayeza (Reading Coach)<br>Email: aamin-asd@amitydubai.ae</div>
   <div class="hero">
     <div>
       <div class="eyebrow">Term 1 Dashboard · 1 Apr – 30 Jun 2026</div>
       <h1>Big stories. Little readers. Bright beginnings. 🌟</h1>
       <p>Our reading programme helps young children become confident readers through stories, phonics, conversation, guided reading and joyful practice. Every child is supported from where they are and encouraged to grow one small step at a time.</p>
-      <span class="term-chip">📅 Term 1 · June Week 3</span>
     </div>
     <div class="cycle" aria-label="Weekly reading cycle">
       <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
@@ -401,26 +406,18 @@ main{padding-top:30px}
     <div class="card star-card"><span class="medal">🥉</span><div><div class="who">Keeona Ann Almeida</div><div class="what">KG2 A · grew <b class="growth-pos">+335L</b> and appears on both Top lists</div></div></div>
   </div>
 
-  <div class="section-h"><h2>This Week &amp; Announcements</h2></div>
-  <div class="grid g2">
-    <div class="card">
-      <h3 style="font-size:18px;margin-bottom:10px">✨ Highlights — June Week 3</h3>
-      <ul class="hl-list">
-        <li><span class="ico t-prek">🖼️</span><div><b>Pre-KG:</b> Picture Walk &amp; Read Aloud in the Reading Room — new June storybook preview.</div></li>
-        <li><span class="ico t-kg1">🐻</span><div><b>KG1:</b> <i>Goldilocks and the 3 Bears</i> + Blend &amp; Read “Story of Pip” with reading stations.</div></li>
-        <li><span class="ico t-kg2">🦉</span><div><b>KG2:</b> Guided Reading with ORT June set — <i>Pets</i>, <i>At the Animal Park</i>, <i>Barn Owls</i> by level group.</div></li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 style="font-size:18px;margin-bottom:10px">📣 For Parents</h3>
-      <ul class="hl-list">
-        <li><span class="ico t-gold">💻</span><div>Rosen LevelUp weekly book is assigned — 20 minutes of reading at home, QR login badges are in school diaries.</div></li>
-        <li><span class="ico t-gold">🌟</span><div>Star Reader certificates go home this Thursday — celebrate your child’s reading wins!</div></li>
-        <li><span class="ico t-gold">📚</span><div>Soft copies of this week’s reading materials are shared via the class OneDrive folder.</div></li>
-      </ul>
-      <div class="note">Reading Room contact: Ms. Anayeza (Reading Coach)<br>Email: aamin-asd@amitydubai.ae</div>
-    </div>
+  <div class="section-h"><h2>📷 Our Reading Room</h2></div>
+  <div class="photo-gallery">
+    <figure>
+      <img src="https://anayeza.com/kg/img/reading-class-room.jpg" alt="Reading Room — inside the classroom" loading="lazy">
+      <figcaption>Inside the Reading Room</figcaption>
+    </figure>
+    <figure>
+      <img src="https://anayeza.com/kg/img/reading-class-door.jpg" alt="Reading Room — entrance door" loading="lazy">
+      <figcaption>Reading Room entrance</figcaption>
+    </figure>
   </div>
+
 </section>
 
 <!-- ══════════ READING PLAN ══════════ -->
@@ -483,8 +480,8 @@ main{padding-top:30px}
   <div class="section-h"><h2>📋 Assessment Tools</h2><span class="hint">Used across all grades</span></div>
   <div class="grid g3">
     <div class="card sblock"><h4>🔍 Observation-based</h4><ul><li>Observation checklists</li><li>Oral questioning</li></ul></div>
-    <div class="card sblock"><h4>📝 Structured checks</h4><ul><li>Reading rubrics</li><li>Mini reading tests</li></ul></div>
-    <div class="card sblock"><h4>💻 Digital data</h4><ul><li>Rosen LevelUp platform performance data</li></ul></div>
+    <div class="card sblock"><h4>📝 Structured checks (KG1 &amp; KG2)</h4><ul><li>Reading rubrics</li><li>Mini reading tests</li></ul></div>
+    <div class="card sblock"><h4>💻 Digital data (KG1 &amp; KG2)</h4><ul><li>Rosen LevelUp platform performance data</li></ul></div>
   </div>
 
   <div class="section-h"><h2>📊 Tracking, Monitoring &amp; Resources</h2></div>
@@ -1126,9 +1123,9 @@ const PLANS = {
 };
 
 const GRADEMETA = {
-  prek:{tag:'t-prek', name:'Pre-KG', freq:'Reading Room twice weekly · 30 min', color:'var(--prek)'},
-  kg1:{tag:'t-kg1', name:'KG1', freq:'Reading Room weekly · 40 min + 20 min LevelUp', color:'var(--kg1)'},
-  kg2:{tag:'t-kg2', name:'KG2', freq:'Reading Room weekly · 40 min + 20 min LevelUp', color:'var(--kg2)'}
+  prek:{tag:'t-prek', name:'Pre-KG', freq:'Session time: 40min', color:'var(--prek)'},
+  kg1:{tag:'t-kg1', name:'KG1', freq:'Session time: 40min', color:'var(--kg1)'},
+  kg2:{tag:'t-kg2', name:'KG2', freq:'Session time: 40min', color:'var(--kg2)'}
 };
 
 /* KG2 guided reading groups shown for kg2 classes */
@@ -1538,9 +1535,6 @@ function renderPlan(){
       <div>
         <div class="pblock"><h4><span class="em">📚</span> Reading activity</h4><p>${p.activity}</p></div>
         <div class="pblock" style="margin-top:16px"><h4><span class="em">🏠</span> Homework</h4><p>${p.homework}</p></div>
-        <div class="pblock" style="margin-top:16px"><h4><span class="em">📎</span> Materials &amp; worksheets</h4>
-          <ul class="files">${p.files.map(f=>`<li><span class="fico">${f[0]}</span> ${f[1]} <span class="src">${f[2]}</span></li>`).join('')}</ul>
-        </div>
       </div>
     </div>
     ${groupsNote}`;
