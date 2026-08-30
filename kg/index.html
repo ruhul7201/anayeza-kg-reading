@@ -314,6 +314,34 @@ main{padding-top:30px}
 @media(max-width:860px){.reading-pillars{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.hero{padding:27px 22px}.hero h1{font-size:30px}.hero:after{display:none}.reading-pillars{grid-template-columns:1fr}.site-title{font-size:18px}.site-sub{font-size:10px}}
 
+/* ── Reading Action Plan ── */
+.rap-meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:14px}
+.rap-meta span{font-size:12.5px;font-weight:700;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 13px;color:#EAF0FB}
+.rap-delivery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:4px 0 8px}
+@media(max-width:700px){.rap-delivery{grid-template-columns:1fr}}
+.rap-delivery .d{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff}
+.rap-delivery .d .freq{font-family:'Baloo 2';font-weight:800;font-size:20px;color:var(--ink);margin:8px 0 2px}
+.rap-delivery .d .mode{font-size:13px;color:var(--muted);font-weight:700}
+.rap-cbar{display:flex;flex-direction:column;gap:13px;margin:4px 2px}
+.rap-row{display:grid;grid-template-columns:130px 1fr;gap:12px;align-items:center}
+.rap-row .rl{font-size:12.5px;font-weight:800;color:var(--ink2);text-align:right;line-height:1.15}
+.rt{background:var(--bg);border-radius:999px;height:24px;position:relative;overflow:visible}
+.rf{height:100%;border-radius:999px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-size:11.5px;font-weight:800;min-width:30px;white-space:nowrap}
+.rap-bench{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px dashed var(--ink);z-index:3}
+.rap-bench b{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;color:var(--ink);background:var(--card);padding:0 4px;white-space:nowrap}
+.rap-grp{display:flex;flex-direction:column;gap:16px;margin:6px 2px}
+.rap-grp .band .bl{font-size:12.5px;font-weight:800;color:var(--ink2);margin-bottom:6px}
+.rap-grp .band .g{display:grid;grid-template-columns:40px 1fr;gap:9px;align-items:center;margin-bottom:5px}
+.rap-grp .band .g .k{font-size:11px;font-weight:800;color:var(--muted)}
+.rap-cap{font-size:12.5px;color:var(--muted);font-weight:700;margin:2px 2px 14px}
+.rap-legend{display:flex;gap:16px;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--muted);flex-wrap:wrap}
+.rap-legend .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.rap-trend{display:flex;align-items:flex-end;gap:7px;height:180px;padding:18px 4px 0;border-bottom:2px solid var(--line)}
+.rap-trend .tb{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.rap-trend .tb .tc{width:100%;max-width:38px;background:var(--kg2);border-radius:6px 6px 3px 3px;position:relative}
+.rap-trend .tb .tv{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:800;color:var(--ink)}
+.rap-trend .tb .tl{font-size:10px;font-weight:800;color:var(--muted);text-align:center;line-height:1.1}
+
 </style>
 </head>
 <body>
@@ -342,7 +370,8 @@ main{padding-top:30px}
     </div>
     <nav id="nav">
       <button data-page="home" class="active">Home</button>
-      <button data-page="plan">Weekly Plan</button>
+      <button data-page="actionplan">Reading Action Plan</button>
+      <button data-page="plan" hidden>Weekly Plan</button>
       <button data-page="strategies">Our Approach</button>
       <button data-page="block">Reading Time</button>
       <button data-page="activities">Activities</button>
@@ -420,6 +449,211 @@ main{padding-top:30px}
     </figure>
   </div>
 
+</section>
+
+<!-- ══════════ READING ACTION PLAN ══════════ -->
+<section class="page" id="page-actionplan">
+  <div class="eyebrow">KHDA Inspection Review · Academic Year 2026–27</div>
+  <h1 class="page-h">Reading Action Plan</h1>
+  <p class="lede">How the Kindergarten reading programme is planned, taught, assessed and improved — evidence-based practice and data-driven instruction across Pre-KG, KG1 and KG2. This is the working plan behind everything else on this portal.</p>
+
+  <div class="hero" style="grid-template-columns:1.5fr 1fr">
+    <div>
+      <div class="eyebrow">Prepared for KHDA Inspection Review</div>
+      <h1 style="font-size:26px">A structured, differentiated path to early reading 📚</h1>
+      <p>Phonics, guided reading, comprehension and digital literacy through Rosen LevelUp — delivered at a frequency and model matched to each stage of early reading development, then verified against real classroom evidence.</p>
+      <div class="rap-meta">
+        <span>🏫 Amity School Dubai</span>
+        <span>👧 Pre-KG · KG1 · KG2</span>
+        <span>📅 Document date: 29 Aug 2026</span>
+        <span>👥 242 children on the KG1 + KG2 roster</span>
+      </div>
+    </div>
+    <div class="cycle" aria-label="Reading action plan sections">
+      <div class="step"><span class="n">1</span> Programme overview</div>
+      <div class="step"><span class="n">2</span> Grade-wise implementation</div>
+      <div class="step"><span class="n">3</span> Assessment &amp; data moderation</div>
+      <div class="step"><span class="n">4</span> Intervention strategies</div>
+      <div class="step"><span class="n">5</span> Reinforcement &amp; impact</div>
+    </div>
+  </div>
+
+  <!-- 1. Programme Overview -->
+  <div class="section-h"><h2>1 · Programme Overview</h2><span class="hint">Structure &amp; delivery model</span></div>
+  <div class="card" style="margin-bottom:14px">
+    <p style="color:var(--muted);font-weight:600;margin-bottom:14px">The Kindergarten Reading Programme develops early literacy through a structured, differentiated approach that integrates phonics, guided reading, comprehension and digital literacy using Rosen LevelUp. It runs across all three year groups, with frequency and delivery matched to each stage.</p>
+    <div class="rap-delivery">
+      <div class="d"><span class="tag t-prek">Pre-KG</span><div class="freq">2 sessions / week</div><div class="mode">Teacher-led</div></div>
+      <div class="d"><span class="tag t-kg1">KG1</span><div class="freq">1 session / week</div><div class="mode">Teacher-led + Student-led</div></div>
+      <div class="d"><span class="tag t-kg2">KG2</span><div class="freq">1 session / week</div><div class="mode">Guided Reading Model</div></div>
+    </div>
+    <h4 style="font-size:14px;margin:12px 0 8px">Each session includes a balance of:</h4>
+    <div class="chips">
+      <span class="chip">📖 Read Aloud</span>
+      <span class="chip">🖼️ Picture Walk</span>
+      <span class="chip">🔤 Phonics / Blending</span>
+      <span class="chip">💬 Guided Reading / Comprehension</span>
+      <span class="chip">💻 Digital Reading — Rosen LevelUp (20 min)</span>
+    </div>
+    <div class="note" style="margin-top:16px">Extended learning is reinforced through weekly reading tasks and home-based assignments aligned with EVS and Math themes.</div>
+  </div>
+
+  <!-- 2. Grade-wise implementation -->
+  <div class="section-h"><h2>2 · Grade-wise Reading Implementation</h2></div>
+  <div class="grid g3">
+    <div class="card act-card b-prek">
+      <span class="tag t-prek">Pre-KG · Twice a week</span>
+      <h3>Listening, vocabulary &amp; print awareness</h3>
+      <p><b>Approach:</b> Teacher-led</p>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Strategies</h4>
+      <ul><li>Read-aloud sessions</li><li>Picture walk &amp; discussion</li><li>Interactive questioning</li></ul>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Extended task</h4>
+      <ul><li>Weekly MP4 read-aloud, shared every Thursday, linked to EVS / Math themes</li></ul>
+      <div class="note" style="margin-top:12px">Pre-KG reading is teacher-led and observation-based — it does not yet use Rosen LevelUp, so no digital Lexile data is reported for this year group.</div>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">KG1 · Once a week</span>
+      <h3>Phonics, blending &amp; early reading</h3>
+      <p><b>Approach:</b> Mixed — Teacher-led + Student-led</p>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Strategies</h4>
+      <ul><li>Read aloud &amp; picture walk</li><li>Sound blending &amp; decoding</li><li>Guided reading practice</li></ul>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Digital &amp; resources</h4>
+      <ul><li>20 minutes Rosen LevelUp</li><li>Weekly book assigned (Monday)</li><li>ORT Level 1 + differentiated higher-level books</li></ul>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Recognition</h4>
+      <ul><li>Reader of the Week</li><li>Termly LevelUp Achievers</li></ul>
+      <div class="note" style="margin-top:12px">Current KG1 roster on Rosen LevelUp: 100 students across 5 classes (KG1A–KG1E).</div>
+    </div>
+    <div class="card act-card b-kg2">
+      <span class="tag t-kg2">KG2 · Once a week</span>
+      <h3>Fluency, comprehension &amp; accuracy</h3>
+      <p><b>Approach:</b> Guided Reading Model</p>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Strategies</h4>
+      <ul><li>Guided reading sessions</li><li>Fluency practice &amp; comprehension questioning</li><li>Picture walk for prediction</li></ul>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Digital &amp; assessment</h4>
+      <ul><li>20 minutes Rosen LevelUp</li><li>Weekly assigned reading tasks</li><li>Twice-weekly guided reading assessment against a 6-criterion rubric</li></ul>
+      <h4 style="font-size:13.5px;margin:12px 0 4px">Resources &amp; recognition</h4>
+      <ul><li>ORT levelled books</li><li>Weekly Reader of the Week · Termly Achievers</li></ul>
+      <div class="note" style="margin-top:12px">Current KG2 roster: 144 students on Rosen LevelUp, 143 on the Guided Reading Assessment Tracker, across 6 classes (KG2A–KG2F).</div>
+    </div>
+  </div>
+
+  <!-- 3. Assessment & Data Moderation -->
+  <div class="section-h"><h2>3 · Assessment &amp; Data Moderation</h2><span class="hint">Baseline data + continuous teacher assessment</span></div>
+  <div class="card" style="margin-bottom:18px">
+    <p style="color:var(--muted);font-weight:600">Baseline reading level is established through Rosen LevelUp (Lexile score). Students are grouped into five reading bands — <b>Emerging, Progressing, Proficient, Advanced, Exceeding</b> — using the school's KG1 / KG2 banding keys. This is combined with continuous teacher-led guided-reading assessment against a structured rubric (phonics, blending, fluency, accuracy, comprehension, vocabulary), scored on its own five-point band (Beginner to Exemplary).</p>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3 style="font-size:16px;margin-bottom:4px">3.1 · Baseline reading bands</h3>
+    <p class="rap-cap">Rosen LevelUp (Lexile) — KG1 (n=96) vs KG2 (n=142), from the KG LevelUp Assessment Report. Values are % of students.</p>
+    <div class="rap-grp" id="rapBands"></div>
+    <div class="rap-legend">
+      <span><span class="dot" style="background:var(--kg1)"></span>KG1</span>
+      <span><span class="dot" style="background:var(--kg2)"></span>KG2</span>
+    </div>
+    <div class="note" style="margin-top:14px">KG1 is weighted toward <b>Progressing</b> (38%), consistent with a younger cohort still building foundational decoding. KG2 shifts toward <b>Proficient and above</b> (63% combined), reflecting a full extra year of structured guided reading.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3 style="font-size:16px;margin-bottom:4px">3.2 · Continuous assessment — KG2 Guided Reading Rubric</h3>
+    <p class="rap-cap">Average rubric score by criterion, latest cycle (June Week 4, n=143). Scale 1 = Beginner to 5 = Exemplary. Nine consecutive weekly cycles recorded, April Week 3 – June Week 4.</p>
+    <div class="rap-cbar" id="rapRubric"></div>
+    <div class="note" style="margin-top:14px"><b>Phonics</b> is the clear strength (3.91, above the Proficient benchmark of 3.0), with <b>Blending</b> (2.89) close behind. <b>Vocabulary</b> (1.83) and <b>Accuracy</b> (2.01) are furthest below benchmark and are the priority focus of the Section 4 intervention strategies.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3 style="font-size:16px;margin-bottom:8px">3.3 · Data moderation process</h3>
+    <p style="color:var(--muted);font-weight:600;margin-bottom:14px">Routine data checks flagged inconsistencies between some students' LevelUp Lexile placement and their observed in-class reading. A teacher-administered <b>Mini Reading Test</b> was given to the affected students and compared against their baseline Lexile placement.</p>
+    <div class="grid g3" style="margin-bottom:16px">
+      <div class="card stat accent"><div class="num">242</div><div class="lbl">Students on the KG1 + KG2 roster</div></div>
+      <div class="card stat o"><div class="num">36</div><div class="lbl">Given a Mini Reading Test (14.9% of the 241 assessed)</div></div>
+      <div class="card stat v"><div class="num">58%</div><div class="lbl">Of those re-tested were re-grouped to a more reliable level</div></div>
+    </div>
+    <p class="rap-cap">Moderation outcome for the 36 students given a Mini Reading Test.</p>
+    <div class="rap-cbar" id="rapModeration"></div>
+    <div class="note" style="margin-top:14px">Where the Mini Reading Test confirmed the LevelUp placement, the group was left unchanged (15 students). Where it did not, the student was moved to match the teacher-administered result — <b>9 up</b> a group, <b>12 down</b>. The largest single discrepancy: a KG2A student LevelUp had placed at Level 1 (Emerging) who read on-or-above grade level on the Mini Test — a four-band jump. That case, with three related KG2A cases, was flagged for re-testing.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <h3 style="font-size:16px;margin-bottom:8px">3.4 · Data quality notes</h3>
+    <ul style="padding-left:19px;font-weight:600;color:var(--ink2)">
+      <li>A few "Not Assessed" students appear in class headers without a data row (one each in KG1A, KG1D, KG1E).</li>
+      <li>Some Lexile scores were recorded without the trailing "L" (e.g. "BR887" not "BR887L") — a formatting inconsistency, not a scoring error.</li>
+      <li>A few group headline counts were one lower than the rows listed beneath them (KG1A/C/D/E Progressing, KG2B Proficient) — likely a Mini-Tested student added without updating the header count.</li>
+      <li>The LevelUp Lexile bands (Emerging–Exceeding) and the Guided Reading Tracker bands (Beginner–Exemplary) are different names for a conceptually similar five-point scale — reported separately, not the same score.</li>
+    </ul>
+    <div class="note" style="margin-top:12px">This moderation process is repeated as routine data quality assurance, so grouping and intervention decisions always rest on the most reliable available evidence.</div>
+  </div>
+
+  <!-- 4. Action Plan & Intervention -->
+  <div class="section-h"><h2>4 · Action Plan &amp; Intervention Strategies</h2><span class="hint">Targeted support at three levels</span></div>
+  <p style="color:var(--muted);font-weight:600;margin-bottom:14px">Groupings confirmed through the Section 3 moderation process, together with criterion-level rubric data, are used to target support.</p>
+  <div class="grid g3">
+    <div class="card act-card b-kg2">
+      <span class="tag t-kg2">Higher achievers</span>
+      <ul style="margin-top:8px"><li>Advanced ORT levels &amp; pleasure reading books</li><li>Focus on fluency, expression &amp; comprehension depth</li><li>Leadership roles during reading sessions</li></ul>
+    </div>
+    <div class="card act-card b-gold">
+      <span class="tag t-gold">Middle group</span>
+      <ul style="margin-top:8px"><li>Reinforcement of phonics &amp; blending</li><li>Guided reading with structured support</li><li>Regular comprehension practice</li></ul>
+    </div>
+    <div class="card act-card b-kg1">
+      <span class="tag t-kg1">Lower achievers</span>
+      <ul style="margin-top:8px"><li>Small-group intervention sessions</li><li>Pull-out support during Life Skills sessions</li><li>Phonics, decoding &amp; sight words</li><li>Repeated reading for fluency</li></ul>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h3 style="font-size:16px;margin-bottom:8px">🎯 Priority focus areas — from rubric data</h3>
+    <p style="color:var(--ink2);font-weight:600">School-wide, KG2 rubric scores are strongest in Phonics (3.91) and Blending (2.89) but below the Proficient benchmark in Vocabulary (1.83), Accuracy (2.01), Comprehension (2.22) and Fluency (2.48). Small-group intervention time is prioritised toward <b>Vocabulary</b> and <b>Accuracy</b> — the two furthest below benchmark — while Phonics moves from taught instruction to independent application and self-correction for most students.</p>
+    <div class="note" style="margin-top:12px">Students in the Emerging and Progressing bands — 48% of KG1 and 33% of KG2 — are the primary population for the pull-out and small-group strategies above. Moderation (3.3) ensures this targeting is based on verified, not just system-reported, reading levels. Differentiation ensures all learners progress at their appropriate level.</div>
+  </div>
+
+  <!-- 5. Reinforcement & Impact -->
+  <div class="section-h"><h2>5 · Reinforcement &amp; Impact</h2></div>
+  <div class="grid g2" style="margin-bottom:18px">
+    <div class="card sblock">
+      <h4>🔁 Reinforcement of the reading programme</h4>
+      <ul><li>Weekly book assignments through Rosen LevelUp</li><li>Integration of reading with EVS and Math themes</li><li>Regular home–school reading connection</li></ul>
+      <h4 style="margin-top:12px">🌟 Recognition systems</h4>
+      <ul><li>Reader of the Week</li><li>Termly Reading Achievers</li></ul>
+    </div>
+    <div class="card sblock">
+      <h4>📈 Outcomes</h4>
+      <ul>
+        <li>Improved reading fluency &amp; confidence, supported by verified, moderated reading groups rather than system placement alone</li>
+        <li>Better alignment between assessed and actual reading levels after the Section 3 moderation</li>
+        <li>Increased student engagement in reading sessions</li>
+        <li>Strengthened independent reading habits</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3 style="font-size:16px;margin-bottom:4px">KG2 guided reading — grade-wide progress</h3>
+    <p class="rap-cap">Grade-wide average, nine consecutive weekly cycles, April Week 3 – June Week 4 (n = 141–143 / week). Scale 1–5.</p>
+    <div class="rap-trend" id="rapTrend"></div>
+    <div class="note" style="margin-top:14px">The clearest week-on-week evidence in the programme: the KG2 grade-wide guided reading average rose from <b>2.17 to 2.56</b> over nine cycles — <b>+0.39 (+18%)</b> — with every student on roster assessed in every cycle. The small dip in late May is expected of a real assessment cycle rather than a smoothed target.</div>
+  </div>
+
+  <div class="card" style="margin-bottom:18px">
+    <h3 style="font-size:16px;margin-bottom:12px">Rosen LevelUp — average Lexile growth per student</h3>
+    <p class="rap-cap">Among students with two recorded LevelUp assessments, 31 May – 29 Aug 2026.</p>
+    <div class="grid g2">
+      <div class="card stat o"><div class="num">+363L</div><div class="lbl">KG1 average Lexile growth · 95.8% of measured students showed positive growth</div></div>
+      <div class="card stat v"><div class="num">+235L</div><div class="lbl">KG2 average Lexile growth · 98.4% of measured students showed positive growth</div></div>
+    </div>
+    <div class="note" style="margin-top:14px">These are per-student figures over the summer window and are separate from the Term 1 mean class-growth figures on the Progress page — the two use different metrics and periods.</div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:16px;margin-bottom:8px">📚 Data sources</h3>
+    <ul class="files" style="margin-top:6px">
+      <li><span class="fico">📊</span> Rosen LevelUp Report (Amity School Dubai, 31 May – 29 Aug 2026) — baseline &amp; growth Lexile data, KG1 &amp; KG2</li>
+      <li><span class="fico">📗</span> KG Reading Groups by Lexile Level — LevelUp Assessment Report — banding by class, KG1 &amp; KG2</li>
+      <li><span class="fico">✅</span> Mini Reading Test — Moderation of Data — 36-student verification &amp; re-grouping outcome</li>
+      <li><span class="fico">📋</span> KG2 Guided Reading Assessment Tracker — twice-weekly rubric scores, 6 classes (KG2A–F), nine weekly cycles</li>
+    </ul>
+  </div>
 </section>
 
 <!-- ══════════ READING PLAN ══════════ -->
@@ -1171,6 +1405,63 @@ ASSESS.forEach(a=>{
   chart.insertAdjacentHTML('beforeend',
     `<div class="bar"><span class="val">+${a.avg}L</span><div class="col" style="height:${h}px;background:var(--${a.g})"></div><span class="cls">${a.c.replace('KG','')}</span></div>`);
 });
+
+/* ── Reading Action Plan charts ── */
+(function(){
+  const bands = {
+    labels:['Emerging','Progressing','Proficient','Advanced','Exceeding'],
+    kg1:[10,38,25,14,5],
+    kg2:[11,22,30,20,13],
+  };
+  const bandsEl = document.getElementById('rapBands');
+  if(bandsEl){
+    const bmax = Math.max(...bands.kg1, ...bands.kg2);
+    bandsEl.innerHTML = bands.labels.map((lab,i)=>{
+      const row = (k,val,col)=>{
+        const w = Math.round(val/bmax*100);
+        return `<div class="g"><span class="k">${k}</span><div class="rt" style="height:20px"><div class="rf" style="width:${Math.max(w,10)}%;background:${col}">${val}%</div></div></div>`;
+      };
+      return `<div class="band"><div class="bl">${lab}</div>${row('KG1',bands.kg1[i],'var(--kg1)')}${row('KG2',bands.kg2[i],'var(--kg2)')}</div>`;
+    }).join('');
+  }
+
+  function cbar(elId, rows, opts){
+    const el = document.getElementById(elId);
+    if(!el) return;
+    const max = opts.max || Math.max(...rows.map(r=>r[1]));
+    el.innerHTML = rows.map((r,i)=>{
+      const [name,val,col] = r;
+      const w = Math.round(val/max*100);
+      const bench = opts.benchmark ? `<div class="rap-bench" style="left:${Math.round(opts.benchmark/max*100)}%">${i===0?`<b>${opts.benchLabel||''}</b>`:''}</div>` : '';
+      return `<div class="rap-row"><span class="rl">${name}</span><div class="rt">${bench}<div class="rf" style="width:${Math.max(w,6)}%;background:${col||'var(--kg2)'}">${opts.fmt?opts.fmt(val):val}</div></div></div>`;
+    }).join('');
+  }
+
+  cbar('rapRubric', [
+    ['Phonics',3.91,'var(--prek)'],
+    ['Blending',2.89,'var(--kg2)'],
+    ['Fluency',2.48,'var(--kg2)'],
+    ['Comprehension',2.22,'var(--kg1)'],
+    ['Accuracy',2.01,'var(--kg1)'],
+    ['Vocabulary',1.83,'var(--kg1)'],
+  ], {max:5, benchmark:3.0, benchLabel:'Proficient 3.0'});
+
+  cbar('rapModeration', [
+    ['Confirmed — same group',15,'var(--kg2)'],
+    ['Moved up a group',9,'var(--prek)'],
+    ['Moved down a group',12,'var(--kg1)'],
+  ], {max:36, fmt:v=>`${v} (${(v/36*100).toFixed(1)}%)`});
+
+  const trend = [['Apr W3',2.17],['Apr W4',2.17],['May W1',2.38],['May W2',2.53],['May W3',2.49],['Jun W1',2.53],['Jun W2',2.54],['Jun W3',2.56],['Jun W4',2.56]];
+  const trendEl = document.getElementById('rapTrend');
+  if(trendEl){
+    const lo=2.0, hi=2.7;
+    trendEl.innerHTML = trend.map(([lab,v])=>{
+      const h = Math.round((v-lo)/(hi-lo)*130)+12;
+      return `<div class="tb"><div class="tc" style="height:${h}px"><span class="tv">${v.toFixed(2)}</span></div><span class="tl">${lab}</span></div>`;
+    }).join('');
+  }
+})();
 
 /* ── Strategies (Amity Reading Programme) ── */
 const STRATEGY = {
