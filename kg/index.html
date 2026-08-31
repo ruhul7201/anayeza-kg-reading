@@ -253,11 +253,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .admin-btn[disabled]{opacity:.4;cursor:not-allowed}
 .edit-hint{font-size:13px;font-weight:800;color:var(--muted)}
 .edit-hint.saved{color:var(--prek)}
-.share-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.share-btn{font-family:'Baloo 2';font-weight:800;font-size:14px;border:2px solid var(--gold);background:var(--gold-soft);color:var(--ink);padding:9px 18px;border-radius:12px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
-.share-btn:hover{background:var(--gold);border-color:var(--gold)}
-.share-msg{font-size:13px;font-weight:800;color:var(--prek)}
-@media(max-width:560px){.share-btn{font-size:13px;padding:8px 14px}}
 .photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 .photo-gallery.cols-3{grid-template-columns:1fr 1fr 1fr}
 .photo-gallery figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
@@ -342,6 +337,25 @@ main{padding-top:30px}
 .rap-trend .tb .tv{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10.5px;font-weight:800;color:var(--ink)}
 .rap-trend .tb .tl{font-size:10px;font-weight:800;color:var(--muted);text-align:center;line-height:1.1}
 
+/* ── Top-bar share icon + header coach card ── */
+.admin-topbar-inner{justify-content:space-between}
+.admin-share-wrap{display:inline-flex;align-items:center;gap:8px;flex:none}
+.admin-topbar button.admin-share{padding:0;width:28px;height:28px;border-radius:8px;font-size:14px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.coach{margin-left:auto;display:flex;align-items:center;gap:10px;flex:none}
+.coach-info{text-align:right;line-height:1.3}
+.coach-name{font-family:'Baloo 2';font-weight:700;font-size:12.5px;color:#fff}
+.coach-mail{display:block;font-size:11.5px;color:#B9C4DB;font-weight:600;text-decoration:none}
+.coach-mail:hover{color:#fff;text-decoration:underline}
+.coach-photo{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.topbar>div:nth-child(2){min-width:0}
+@media(max-width:620px){
+  .coach-info{display:none}
+  .coach-photo{width:38px;height:38px}
+  .topbar{flex-wrap:wrap}
+  .topbar>div:nth-child(2){flex:1 1 auto}
+  .site-title{white-space:normal}
+}
+
 </style>
 </head>
 <body>
@@ -357,6 +371,10 @@ main{padding-top:30px}
       <span class="admin-icon">🔓</span> <span class="admin-label">Admin Mode Active — editing enabled on Weekly Plan, Our Approach &amp; Teacher Review</span>
       <button id="adminLogoutBtn" type="button">Log out</button>
     </span>
+    <span class="admin-share-wrap">
+      <span id="shareMsg" class="admin-msg ok" role="status"></span>
+      <button id="shareDownloadBtn" class="admin-share" type="button" title="Share this page — download as HTML" aria-label="Share this page — download as HTML">🔗</button>
+    </span>
   </div>
 </div>
 <header>
@@ -366,6 +384,13 @@ main{padding-top:30px}
       <div>
         <div class="site-title">Little Readers · Kindergarten Reading</div>
         <div class="site-sub">AMITY SCHOOL DUBAI · PLAY · READ · TALK · GROW</div>
+      </div>
+      <div class="coach">
+        <div class="coach-info">
+          <div class="coach-name">Ms. Anayeza · Reading Coach</div>
+          <a class="coach-mail" href="mailto:aamin-asd@amitydubai.ae">aamin-asd@amitydubai.ae</a>
+        </div>
+        <img class="coach-photo" src="/kg/img/anayeza-coach.jpg" alt="Ms. Anayeza, Reading Coach" width="46" height="46" loading="lazy">
       </div>
     </div>
     <nav id="nav">
@@ -387,11 +412,6 @@ main{padding-top:30px}
 
 <!-- ══════════ HOME / DASHBOARD ══════════ -->
 <section class="page show" id="page-home">
-  <div class="share-row">
-    <button class="share-btn" id="shareDownloadBtn" type="button">🔗 Share this Page — Download as HTML</button>
-    <span class="share-msg" id="shareMsg" role="status"></span>
-  </div>
-  <div class="note" style="margin-bottom:16px">Reading Room contact: Ms. Anayeza (Reading Coach)<br>Email: aamin-asd@amitydubai.ae</div>
   <div class="hero">
     <div>
       <div class="eyebrow">Term 1 Dashboard · 1 Apr – 30 Jun 2026</div>
@@ -1139,7 +1159,7 @@ main{padding-top:30px}
 <footer>
   <div class="wrap">
     <div><b style="color:#fff">Amity School Dubai</b> · Kindergarten Reading Class · Foundation Stage</div>
-    <div>Amity Reading Programme · AY 2026–27</div>
+    <div>Amity KG Reading Programme · AY 2026–27</div>
   </div>
 </footer>
 <script>
