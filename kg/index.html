@@ -283,8 +283,9 @@ body{background:linear-gradient(180deg,#FFFDF8 0%,#F6F8FC 42%,#F7FAFC 100%);font
 header{background:rgba(30,42,74,.97);backdrop-filter:blur(12px)}
 .logo{border-radius:15px;box-shadow:0 5px 12px rgba(245,179,1,.22)}
 .site-title{font-size:21px;letter-spacing:.1px}.site-sub{letter-spacing:.8px}
-nav{padding-bottom:11px;gap:5px}
-nav button{font-size:14px;padding:8px 13px;border-radius:999px}
+nav{padding-bottom:11px;gap:2px}
+nav button{font-size:13.5px;padding:7px 9px;border-radius:999px;white-space:nowrap}
+@media(min-width:980px){nav button{font-size:13px;padding:7px 8px;letter-spacing:-.1px}}
 main{padding-top:30px}
 .hero{position:relative;overflow:hidden;border-radius:26px;padding:34px 32px;background:linear-gradient(135deg,#1E2A4A 0%,#3C4F83 72%,#5669A0 100%);box-shadow:0 16px 34px rgba(30,42,74,.14)}
 .hero:after{content:'✦  ✿  ✦';position:absolute;right:28px;top:12px;color:rgba(255,255,255,.16);font-size:54px;letter-spacing:8px;transform:rotate(8deg)}
@@ -441,16 +442,16 @@ main{padding-top:30px}
     </div>
     <nav id="nav">
       <button data-page="home" class="active">Home</button>
-      <button data-page="actionplan">Reading Action Plan</button>
-      <button data-page="annual">Annual Planner</button>
-      <button data-page="plan" hidden>Weekly Plan</button>
       <button data-page="strategies">Our Approach</button>
       <button data-page="block">Reading Time</button>
+      <button data-page="actionplan">Reading Action Plan</button>
       <button data-page="activities">Activities</button>
       <button data-page="classes">Our Readers</button>
+      <button data-page="annual">Annual Planner</button>
       <button data-page="assessment">Progress</button>
       <button data-page="review">Teacher Review</button>
       <button data-page="resources">Book Shelf</button>
+      <button data-page="plan" hidden>Weekly Plan</button>
     </nav>
   </div>
 </header>
