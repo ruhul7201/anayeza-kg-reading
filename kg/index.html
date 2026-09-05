@@ -81,6 +81,8 @@ main{padding:28px 0 60px}
 .hero .eyebrow{color:var(--gold)}
 .term-chip{display:inline-block;margin-top:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
 .cycle{display:flex;flex-direction:column;gap:8px}
+.hero-side{display:flex;flex-direction:column;gap:14px}
+.hero-photo{width:100%;height:130px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 20px rgba(0,0,0,.25)}
 .cycle .step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px}
 .cycle .n{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex:none}
 @media(max-width:760px){.hero{grid-template-columns:1fr}}
@@ -466,10 +468,13 @@ main{padding-top:30px}
       <h1>Big stories. Little readers. Bright beginnings. 🌟</h1>
       <p>Our reading programme helps young children become confident readers through stories, phonics, conversation, guided reading and joyful practice. Every child is supported from where they are and encouraged to grow one small step at a time.</p>
     </div>
-    <div class="cycle" aria-label="Weekly reading cycle">
-      <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
-      <div class="step"><span class="n">2</span> Guided Reading — small groups</div>
-      <div class="step"><span class="n">3</span> Phonics — blend &amp; decode</div>
+    <div class="hero-side">
+      <img class="hero-photo" src="/kg/img/reading-room-hero.jpg" alt="Reading Room entrance" loading="lazy">
+      <div class="cycle" aria-label="Weekly reading cycle">
+        <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
+        <div class="step"><span class="n">2</span> Guided Reading — small groups</div>
+        <div class="step"><span class="n">3</span> Phonics — blend &amp; decode</div>
+      </div>
     </div>
   </div>
 
@@ -485,16 +490,6 @@ main{padding-top:30px}
     <div class="card stat p"><div class="num">2</div><div class="lbl">Pre-KG classes · Picture Walk twice weekly</div></div>
     <div class="card stat o"><div class="num">+84L</div><div class="lbl">KG1 average Lexile growth this term</div></div>
     <div class="card stat v"><div class="num">+38L</div><div class="lbl">KG2 average Lexile growth this term</div></div>
-  </div>
-
-  <div class="section-h"><h2>📈 Growing as Readers</h2><span class="hint">Rosen LevelUp · Lexile progress</span></div>
-  <div class="card">
-    <div class="chart" id="growthChart"></div>
-    <div class="legend">
-      <span><span class="dot" style="background:var(--kg1)"></span>KG1 classes</span>
-      <span><span class="dot" style="background:var(--kg2)"></span>KG2 classes</span>
-      <span>💡 A negative Lexile (BR) means Beginning Reader — growth matters more than level at this stage.</span>
-    </div>
   </div>
 
   <div class="section-h"><h2>🌟 Celebrate the Journey</h2><span class="hint">Growth, effort and reading confidence</span></div>
@@ -1554,15 +1549,6 @@ nav.addEventListener('click', e=>{
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));
   document.getElementById('page-'+b.dataset.page).classList.add('show');
   window.scrollTo({top:0,behavior:'smooth'});
-});
-
-/* ── Dashboard chart ── */
-const chart = document.getElementById('growthChart');
-const maxG = Math.max(...ASSESS.map(a=>a.avg));
-ASSESS.forEach(a=>{
-  const h = Math.round(a.avg/maxG*140)+14;
-  chart.insertAdjacentHTML('beforeend',
-    `<div class="bar"><span class="val">+${a.avg}L</span><div class="col" style="height:${h}px;background:var(--${a.g})"></div><span class="cls">${a.c.replace('KG','')}</span></div>`);
 });
 
 /* ── Reading Action Plan charts ── */
