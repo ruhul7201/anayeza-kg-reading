@@ -81,8 +81,12 @@ main{padding:28px 0 60px}
 .hero .eyebrow{color:var(--gold)}
 .term-chip{display:inline-block;margin-top:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-weight:700;font-size:13px}
 .cycle{display:flex;flex-direction:column;gap:8px}
-.hero-side{display:flex;flex-direction:column;gap:14px}
-.hero-photo{width:100%;height:130px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.home-hero{display:flex;flex-direction:column;gap:18px}
+.hero-top{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:stretch}
+.hero-photo{width:100%;height:100%;min-height:150px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.18);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.cycle-row{flex-direction:row;flex-wrap:wrap;gap:10px}
+.cycle-row .step{flex:1;min-width:200px}
+@media(max-width:760px){.hero-top{grid-template-columns:1fr}.hero-photo{height:180px}}
 .cycle .step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px}
 .cycle .n{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex:none}
 @media(max-width:760px){.hero{grid-template-columns:1fr}}
@@ -463,18 +467,18 @@ main{padding-top:30px}
 
 <!-- ══════════ HOME / DASHBOARD ══════════ -->
 <section class="page show" id="page-home">
-  <div class="hero">
-    <div>
-      <h1>Big stories. Little readers. Bright beginnings. 🌟</h1>
-      <p>Our reading programme helps young children become confident readers through stories, phonics, conversation, guided reading and joyful practice. Every child is supported from where they are and encouraged to grow one small step at a time.</p>
-    </div>
-    <div class="hero-side">
-      <img class="hero-photo" src="/kg/img/reading-room-hero.jpg" alt="Reading Room entrance" loading="lazy">
-      <div class="cycle" aria-label="Weekly reading cycle">
-        <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
-        <div class="step"><span class="n">2</span> Guided Reading — small groups</div>
-        <div class="step"><span class="n">3</span> Phonics — blend &amp; decode</div>
+  <div class="hero home-hero">
+    <div class="hero-top">
+      <div>
+        <h1>Big stories. Little readers. Bright beginnings. 🌟</h1>
+        <p>Our reading programme helps young children become confident readers through stories, phonics, conversation, guided reading and joyful practice. Every child is supported from where they are and encouraged to grow one small step at a time.</p>
       </div>
+      <img class="hero-photo" src="/kg/img/reading-room-hero.jpg" alt="Reading Room entrance" loading="lazy">
+    </div>
+    <div class="cycle cycle-row" aria-label="Weekly reading cycle">
+      <div class="step"><span class="n">1</span> Picture Walk — preview &amp; predict</div>
+      <div class="step"><span class="n">2</span> Guided Reading — small groups</div>
+      <div class="step"><span class="n">3</span> Phonics — blend &amp; decode</div>
     </div>
   </div>
 
@@ -865,6 +869,28 @@ main{padding-top:30px}
   <h1 class="page-h">A Happy, Focused Reading Session</h1>
   <p class="lede">Each session balances teacher modelling, small-group support, independent practice and conversation. The routine is predictable enough to make children feel secure, but playful enough to keep them curious.</p>
 
+  <div class="section-h"><h2>📷 Reading Time in Action</h2></div>
+  <div class="photo-gallery cols-3" style="margin-bottom:20px">
+    <figure>
+      <img src="/kg/img/reading-time-1.jpg" alt="Reading Time — session 1" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-3.jpg" alt="Reading Time — session 3" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-4.jpg" alt="Reading Time — session 4" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-5.jpg" alt="Reading Time — session 5" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-6.jpg" alt="Reading Time — session 6" loading="lazy">
+    </figure>
+    <figure>
+      <img src="/kg/img/reading-time-7.jpg" alt="Reading Time — session 7" loading="lazy">
+    </figure>
+  </div>
+
   <div class="card" style="margin-bottom:20px">
     <h3 style="font-size:17px;margin-bottom:4px">⏱️ Timing Blueprint — a Foundation Stage session</h3>
     <p style="color:var(--muted);font-weight:600;font-size:13.5px;margin-bottom:6px">Modernised from the classic 4-part reading block format.</p>
@@ -936,28 +962,6 @@ main{padding-top:30px}
       <div class="tglow"><span>📶 Leveled Reading (LevelUp)</span><span class="toggle-pill tog-prek"><span class="knob"></span></span></div>
     </div>
     <div class="note">✅ All switched on across our Reading Room — each tool supports one of the four reading-block stages above rather than replacing teacher instruction.</div>
-  </div>
-
-  <div class="section-h"><h2>📷 Reading Time in Action</h2></div>
-  <div class="photo-gallery cols-3">
-    <figure>
-      <img src="/kg/img/reading-time-1.jpg" alt="Reading Time — session 1" loading="lazy">
-    </figure>
-    <figure>
-      <img src="/kg/img/reading-time-3.jpg" alt="Reading Time — session 3" loading="lazy">
-    </figure>
-    <figure>
-      <img src="/kg/img/reading-time-4.jpg" alt="Reading Time — session 4" loading="lazy">
-    </figure>
-    <figure>
-      <img src="/kg/img/reading-time-5.jpg" alt="Reading Time — session 5" loading="lazy">
-    </figure>
-    <figure>
-      <img src="/kg/img/reading-time-6.jpg" alt="Reading Time — session 6" loading="lazy">
-    </figure>
-    <figure>
-      <img src="/kg/img/reading-time-7.jpg" alt="Reading Time — session 7" loading="lazy">
-    </figure>
   </div>
 
   <div class="remember">
